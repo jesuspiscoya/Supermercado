@@ -1,0 +1,51 @@
+.contenedor {
+    height: auto;
+    width: 40%;
+    border-radius: 8px;
+    background-color: #24303c;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.contenido {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    height: 50vh;
+    gap: 70px;
+}
+
+.mensaje {
+    font-size: 25px;
+    font-style: italic;
+    color: #D0D0D0;
+}
+
+.volver {
+    background: #131313;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s ease all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volver:hover {
+    box-shadow: 3px 0px 20px rgb(12, 12, 12);
+    color: #ffffff;
+}
+
+.volver a {
+    color: #D0D0D0;
+    text-decoration: none;
+    padding: 14px 35px;
+}
+
+.volver a:hover {
+    color: #ffffff;
+}

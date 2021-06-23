@@ -1,0 +1,194 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background: #0C0C0C;
+    color: #E7E7E7;
+    padding: 0 5%;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.inicio {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.inicio a {
+    line-height: 77px;
+    color: #E7E7E7;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.inicio:hover > .border {
+    width: 100%;
+    background: cyan;
+    border: 1.5px solid cyan;
+    box-shadow: 0 0 20px #33ffff,
+                0 0 30px #66ffff;
+}
+
+header a:hover {
+    color: #00BFAD;
+    transition: .4s;
+}
+
+nav:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+nav ul {
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+    background: rgb(12,12,12,0.95);
+}
+
+nav ul a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #DD0606;
+    transition: .4s all ease;
+}
+
+nav ul input {
+    line-height: 50px;
+    text-transform: uppercase;
+    font-size: 16px;
+    background: none;
+    font-weight: bold;
+    border: none;
+    color: #DD0606;
+    cursor: pointer;
+    width: 100%;
+    transition: .4s all ease;
+}
+
+.border {
+    background: #0C0C0C;
+    border: 1.5px solid #0C0C0C;
+    transition: .4s all ease;
+}
+
+nav ul li:hover > .border {
+    background: cyan;
+    border: 1.5px solid cyan;
+    box-shadow: 0 0 20px #33ffff,
+                0 0 30px #66ffff;
+}
+
+nav ul li span {
+    line-height: 80px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #DD0606;
+    border-radius: 10px;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+
+nav ul li span:hover {
+    border-radius: 25px;
+    box-shadow: 0 0 6px #33ffff,
+                0 0 6px #66ffff;
+}
+
+nav ul ul {
+    position: absolute;
+    top: 100px;
+    opacity: 0;
+    visibility: hidden;
+    transition: top;
+}
+
+nav ul ul:before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    border: 15px solid;
+    border-color: transparent transparent cyan transparent;
+}
+
+nav ul li:hover > span,
+nav ul li:hover > a,
+nav ul input:hover {
+    color: cyan;
+}
+
+nav ul li:hover > ul {
+    transition: .4s all ease;
+    top: 83px;
+    opacity: 1;
+    visibility: visible;
+}
+
+nav ul ul li {
+    transition: .4s all ease;
+    position: relative;
+    margin: 0;
+    width: 150px;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid #2E2E2E;
+}
+
+nav ul ul li:hover > span {
+    box-shadow: none;
+}
+
+nav ul ul li span, nav ul ul li a {
+    line-height: 50px;
+    border-bottom: none;
+}
+
+nav ul ul ul {
+    border-top: none;
+}
+
+nav ul ul ul:before {
+    top: -70px;
+    left: 150px;
+    border-color: transparent rgb(12,12,12,0.95) transparent transparent;
+}
+
+nav ul ul ul li {
+    position: relative;
+    top: -83px;
+    left: 164px;
+    width: 110px;
+}
+
+.btn-salir {
+    font-size: 16px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border: 3px solid white;
+    transition: .4s all ease;
+}
+
+.btn-salir:hover {
+    background: #970000;
+    border: 3px solid #DD0606;
+    transition: .4s all ease;
+    box-shadow: 0 0 10px #5D0000,
+                0 0 10px #E50000;
+}
