@@ -1,13 +1,13 @@
 package persistencia;
 
-import java.util.List;
 import negocio.Empleado;
+import java.util.List;
 
-public interface EmpleadoDAO {
+public interface EmpleadoDao {
+    public Object[] validar(String usu, String pass);
+    public Object[] buscar(String cod);
     public String grabar(Empleado emp);
     public String actualizar(Empleado emp);
-    public String eliminar(Empleado emp);
-    public Object[] buscar(String cod);
+    public String eliminar(String cod);
     public List listar();
-    public Object[] validar(String usu, String pass);
 }

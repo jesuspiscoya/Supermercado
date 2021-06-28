@@ -2,29 +2,35 @@ package servicio;
 
 import java.util.List;
 import negocio.Proveedor;
-import persistencia.ProveedorDAO;
-import persistencia.ProveedorDAOImp;
+import persistencia.ProveedorDao;
 
 public class ProveedorServicioImp implements ProveedorServicio {
-    
-    @Override
-    public String grabar(String cod, String nom, String dir) {
-        Proveedor prov=new Proveedor(cod, nom, dir);
-        ProveedorDAO provDao=new ProveedorDAOImp();
-        String msg=provDao.grabar(prov);
-        
-        if (msg==null) {
-            msg="Proveedor grabado con éxito.";
-        } return msg;
+    private ProveedorDao proDao;
+    private Proveedor pro;
+
+    public void setProDao(ProveedorDao proDao) {
+        this.proDao = proDao;
+    }
+
+    public void setPro(Proveedor pro) {
+        this.pro = pro;
     }
     
     @Override
     public Object[] buscar(String cod) {
-        return new ProveedorDAOImp().buscar(cod);
+        return proDao.buscar(cod);
+    }
+    
+    @Override
+    public String grabar(String cod, String nom, String dir) {
+        pro.setCod(cod);
+        pro.setNom(nom);
+        pro.setDir(dir);
+        return proDao.grabar(pro);
     }
     
     @Override
     public List listar() {
-        return new ProveedorDAOImp().listar();
+        return proDao.listar();
     }
 }

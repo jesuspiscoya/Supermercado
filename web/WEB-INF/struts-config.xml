@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="EmpleadoFormulario" type="vista.EmpleadoFormulario"/>
     
     </form-beans>
     
@@ -19,10 +20,25 @@
     </global-forwards>
 
     <action-mappings>
+        <action input="/Login.jsp" name="EmpleadoFormulario" path="/AccesoControl" scope="request" type="vista.AccesoControl">
+            <forward name="Menu" path="/Menu.jsp"/>
+            <forward name="Mensaje" path="/Mensaje.jsp"/>
+        </action>
+        <action input="/Buscar.jsp" name="EmpleadoFormulario" path="/BuscarControl" scope="request" type="vista.BuscarControl">
+            <forward name="Buscar" path="/Editar.jsp"/>
+            <forward name="Mensaje" path="/Mensaje.jsp"/>
+        </action>
+        <action input="/NavBar.jsp" name="EmpleadoFormulario" path="/ListarControl" scope="request" type="vista.ListarControl">
+            <forward name="Listar" path="/Listar.jsp"/>
+        </action>
+        <action input="/Grabar.jsp" name="EmpleadoFormulario" path="/GrabarControl" scope="request" type="vista.GrabarControl">
+            <forward name="Grabar" path="/Grabar.jsp"/>
+        </action>
+        
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>
     
-    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <controller processorClass="org.springframework.web.struts.DelegatingTilesRequestProcessor"/>
 
     <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
     

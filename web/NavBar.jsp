@@ -4,8 +4,11 @@
     Author     : jesus
 --%>
 
+<%@page import="vista.PresentadorGeneral"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
 <header>
-    <% Object[] fila=(Object[])session.getAttribute("fila"); %>
+    <% Object[] fila=(Object[])session.getAttribute("validar"); %>
     
     <div class="inicio">
         <a href="Menu.jsp">Supermercados Piscoya</a>
@@ -21,10 +24,13 @@
                         <span>Empleado</span>
                         <ul>
                             <li>
-                                <a href="EmpleadoBuscar.jsp">Buscar</a>
+                                <a href="Buscar.jsp?id=Empleado">Buscar</a>
                             </li>
                             <li>
-                                <form action="EmpleadoControl" method="post"><input type="submit" name="acceso" value="Listar"></form>
+                                <x:form action="ListarControl" method="post">
+                                    <x:hidden property="listar" value="Empleado"/>
+                                    <x:submit value="Listar"/>
+                                </x:form>
                             </li>
                         </ul>
                     </li>
@@ -32,13 +38,16 @@
                         <span>Cliente</span>
                         <ul>
                             <li>
-                                <a href="ClienteGrabar.jsp">Registrar</a>
+                                <a href="Grabar.jsp?id=Cliente">Registrar</a>
                             </li>
                             <li>
-                                <a href="ClienteBuscar.jsp">Buscar</a>
+                                <a href="Buscar.jsp?id=Cliente">Buscar</a>
                             </li>
                             <li>
-                                <form action="ClienteControl" method="post"><input type="submit" name="acceso" value="Listar"></form>
+                                <x:form action="ListarControl" method="post">
+                                    <x:hidden property="listar" value="Cliente"/>
+                                    <x:submit value="Listar"/>
+                                </x:form>
                             </li>
                         </ul>
                     </li>
@@ -46,13 +55,16 @@
                         <span>Proveedor</span>
                         <ul>
                             <li>
-                                <a href="ProveedorGrabar.jsp">Registrar</a>
+                                <a href="Grabar.jsp?id=Proveedor">Registrar</a>
                             </li>
                             <li>
-                                <a href="ProveedorBuscar.jsp">Buscar</a>
+                                <a href="Buscar.jsp?id=Proveedor">Buscar</a>
                             </li>
                             <li>
-                                <form action="ProveedorControl" method="post"><input type="submit" name="acceso" value="Listar"></form>
+                                <x:form action="ListarControl" method="post">
+                                    <x:hidden property="listar" value="Proveedor"/>
+                                    <x:submit value="Listar"/>
+                                </x:form>
                             </li>
                         </ul>
                     </li>
@@ -63,6 +75,7 @@
                     </li>
                 </ul>
             </li>
+            <!--
             <li>
                 <span>Procesos</span>
                 <div class="border"></div>
@@ -81,6 +94,7 @@
                     </li>
                 </ul>
             </li>
+            -->
             <li>
                 <span>Consultas</span>
                 <div class="border"></div>

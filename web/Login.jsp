@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,20 +18,20 @@
         <p class="titulo-prin">Acceso al Sistema</p>
         <div class="center">
             <div class="contenido">
-                <form class="formLogin" action="EmpleadoControl" method="post">
+                <x:form styleClass="formLogin" action="AccesoControl" method="post">
                     <h2>Login</h2>
                     <div class="datos">
                         <label for="usuario">Usuario:</label>
-                        <input type="text" name="usuario" placeholder="Escriba su usuario" id="usuario" required>
+                        <x:text property="usuario" styleId="usuario"/>
 
                         <label for="password">Contraseña:</label>
-                        <input type="password" name="password" placeholder="Escriba su contraseña" id="password" required>
+                        <x:password property="password" styleId="password"/>
                     </div>
                     <div class="botones">
-                        <input type="submit" name="acceso" class="btn-login" value="Iniciar Sesion">
-                        <input type="button" name="back" class="btn-back" value="Regresar" onclick="location.href='Portal.jsp'">
+                        <x:submit property="acceso" styleClass="btn-login" value="Iniciar Sesion"/>
+                        <x:button property="back" styleClass="btn-back" onclick="location.href='Portal.jsp'" value="Regresar"/>
                     </div>
-                </form>
+                </x:form>
             </div>
         </div>
     </body>

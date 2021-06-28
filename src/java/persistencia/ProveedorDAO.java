@@ -3,10 +3,10 @@ package persistencia;
 import java.util.List;
 import negocio.Proveedor;
 
-public interface ProveedorDAO {
-    public String grabar(Proveedor prov);
-    public String actualizar(Proveedor prov);
-    public String eliminar(Proveedor prov);
+public interface ProveedorDao {
     public Object[] buscar(String cod);
+    public String grabar(Proveedor pro);
+    public String actualizar(Proveedor pro);
+    public String eliminar(String cod);
     public List listar();
 }

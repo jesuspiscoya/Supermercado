@@ -3,7 +3,7 @@ package persistencia;
 import java.util.List;
 import negocio.Orden;
 
-public interface OrdenDAO {
+public interface OrdenDao {
     public String grabar(Orden ord);
     public List listarNum();
 }

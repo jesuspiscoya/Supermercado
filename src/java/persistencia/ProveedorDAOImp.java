@@ -1,39 +1,81 @@
 package persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 import negocio.Proveedor;
 
-public class ProveedorDAOImp implements ProveedorDAO {
-    
-    @Override
-    public String grabar(Proveedor prov) {
-        String sql="insert into proveedor values('"+prov.getCod()+"','"+prov.getNom()+"','"+prov.getDir()+"')";
-        return Operacion.ejecutar(sql);
-    }
+public class ProveedorDaoImp implements ProveedorDao {
+    private ProveedorJpaController projc;
 
-    @Override
-    public String actualizar(Proveedor prov) {
-        String sql="update proveedor set dir='"+prov.getDir()+"' where cod='"+prov.getCod()+"'";
-        return Operacion.ejecutar(sql);
-    }
-
-    @Override
-    public String eliminar(Proveedor prov) {
-        String sql="delete from proveedor where cod='"+prov.getCod()+"'";
-        return Operacion.ejecutar(sql);
+    public void setProjc(ProveedorJpaController projc) {
+        this.projc = projc;
     }
 
     @Override
     public Object[] buscar(String cod) {
-        return Operacion.buscar("select * from proveedor where cod='"+cod+"'");
+        Proveedor pro=projc.findProveedor(cod);
+        if (pro!=null) {
+            Object[] fila=new Object[5];
+            fila[0]=pro.getCod();
+            fila[1]=pro.getNom();
+            fila[2]=pro.getDir();
+            return fila;
+        }
+        return null;
+    }
+    
+    @Override
+    public String grabar(Proveedor pro) {
+        String msg;
+        
+        try {
+            projc.create(pro);
+            msg="Proveedor grabado con éxito";
+        } catch (Exception e) {
+            msg=e.getMessage();
+        }
+        return msg;
+    }
+
+    @Override
+    public String actualizar(Proveedor pro) {
+        String msg;
+        
+        try {
+            projc.edit(pro);
+            msg="Proveedor actualizado";
+        } catch (Exception e) {
+            msg=e.getMessage();
+        }
+        return msg;
+    }
+
+    @Override
+    public String eliminar(String cod) {
+        String msg;
+        
+        try {
+            projc.destroy(cod);
+            msg="Proveedor eliminado";
+        } catch (Exception e) {
+            msg=e.getMessage();
+        }
+        return msg;
     }
 
     @Override
     public List listar() {
-        String sql="select * from proveedor";
-        List lista=Operacion.listar(sql);
-        if (lista!=null) {
-            return lista;
-        } return null;
+        List lis=projc.findProveedorEntities();
+        List lista=new ArrayList();
+        
+        for (int i = 0; i < lis.size(); i++) {
+            Proveedor pro=(Proveedor)lis.get(i);
+            Object[] fila=new Object[5];
+            fila[0]=pro.getCod();
+            fila[1]=pro.getNom();
+            fila[2]=pro.getDir();
+            lista.add(fila);
+        }
+        return lista;
     }
 }

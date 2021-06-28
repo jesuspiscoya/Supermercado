@@ -19,7 +19,7 @@
                 <p class="titulo">Supermercados Piscoya</p>
                 <div class="portal">
                     <div>
-                        <a href="EmpleadoGrabar.jsp">Registrar Empleado</a>
+                        <a href="Grabar.jsp?id=Empleado">Registrar Empleado</a>
                     </div>
                     <div>
                         <a href="Login.jsp">Acceso al Sistema</a>

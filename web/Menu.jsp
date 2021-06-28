@@ -4,6 +4,7 @@
     Author     : jesus
 --%>
 
+<%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
     </head>
     <body>
         <!-- Scriptlets -->
-        <% Object[] fila=(Object[])session.getAttribute("fila"); %>
+        <% Object[] fila=(Object[])session.getAttribute("validar"); %>
         
         <!-- NavBar -->
         <jsp:include page="NavBar.jsp"/>

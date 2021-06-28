@@ -4,6 +4,7 @@
     Author     : jesus
 --%>
 
+<%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,16 +19,17 @@
             <div class="contenedor">
                 <p class="titulo">Mensaje</p>
                 <!-- Scriptlets -->
-                <% String msg=(String)session.getAttribute("msg"); %>
+                <% PresentadorGeneral pg=(PresentadorGeneral)session.getAttribute("pg"); %>
                 <div class="contenido">
                     <div>
                         <!-- Expresion -->
-                        <p class="mensaje"><%= msg %></p>
+                        <p class="mensaje"><%= pg.getMsg() %></p>
                     </div>
                     <div class="volver">
                         <a href="Portal.jsp">Volver al Portal</a>
                     </div>
                 </div>
+                <% pg.setMsg(null); %>
             </div>
         </div>
     </body>
