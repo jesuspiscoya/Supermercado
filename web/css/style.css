@@ -242,11 +242,15 @@ h2 {
     border-bottom: 4px solid #009688;
 }
 
-.msg-grabar {
+.msg-grabar, .msg-noFind {
     background: #00D866;
     padding: 4px 20px;
     font-size: 13px;
     text-align: center;
     border-radius: 40px;
     margin-bottom: 20px;
+}
+
+.msg-noFind {
+    background: #FFF26B;
 }

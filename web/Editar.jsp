@@ -54,11 +54,12 @@
 
                     <label for="direccion">Dirección:</label>
                     <input type="text" name="direccion" placeholder="Escriba su dirección" value="<%= fila[2] %>" id="direccion" required>
-                    <% } pg.setMsg(""); %>
+                    <% } %>
                 </div>
                 <div class="botones">
                     <input type="submit" name="acceso" class="btn-buscar" value="Buscar">
                     <input type="button" name="back" class="btn-back" value="Regresar" onclick="location.href='Buscar.jsp?id=<%= pg.getMsg() %>'">
+                    <% pg.setMsg(""); %>
                 </div>
             </form>
         </div>

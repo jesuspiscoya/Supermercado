@@ -50,6 +50,18 @@
 
                         <label for="password">Contraseña:</label>
                         <x:password property="password" styleId="password"/>
+                        <% } else if (rol.equals("Articulo")) { %>
+                        <label for="codigo">Código:</label>
+                        <input type="text" name="codigo" placeholder="Ingrese el código" id="codigo" required>
+
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" id="nombre" required>
+
+                        <label for="precio">Precio:</label>
+                        <input type="text" name="precio" placeholder="Ingrese el precio" id="precio" required>
+                        
+                        <label for="stock">Stock:</label>
+                        <input type="text" name="stock" placeholder="Ingrese el stock" id="stock" required>
                         <% } else { %>
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>

@@ -43,10 +43,13 @@ public class ListarControl extends org.apache.struts.action.Action {
             pg.setLista(cliSer.listar());
             pg.setMsg("Clientes");
             return mapping.findForward("Listar");
-        } else {
+        } else if (request.getParameter("listar").equals("Proveedor")) {
             pg.setLista(proSer.listar());
             pg.setMsg("Proveedor");
             return mapping.findForward("Listar");
+        } else {
+            request.getSession().invalidate();
+            return mapping.findForward("Salir");
         }
     }
 }

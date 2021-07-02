@@ -175,6 +175,8 @@ nav ul ul ul li {
 }
 
 .btn-salir {
+    background: #0C0C0C;
+    cursor: pointer;
     font-size: 16px;
     padding: 8px 20px;
     border-radius: 50px;

@@ -4,9 +4,17 @@
     Author     : jesus
 --%>
 
+<%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
-<% String rol=request.getParameter("id"); %>
+<%
+    String rol=(String)session.getAttribute("id");
+    if (request.getParameter("id") != null)
+        rol=request.getParameter("id");
+    PresentadorGeneral pg=(PresentadorGeneral) session.getAttribute("pg");
+    if (pg == null)
+        pg=new PresentadorGeneral();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,6 +41,13 @@
                         <x:submit styleClass="btn-buscar" value="Buscar"/>
                         <x:button property="back" styleClass="btn-back" onclick="location.href='Menu.jsp'" value="Regresar"/>
                     </div>
+                    
+                    <% if (!pg.getMsg().equals("")) { %>
+                        <div class="msg-noFind">
+                            <span><%= pg.getMsg() %></span>
+                        </div>
+                    <% pg.setMsg(""); %>
+                    <% } %>
                 </x:form>
             </div>
         </div>

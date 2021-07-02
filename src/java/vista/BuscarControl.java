@@ -32,7 +32,7 @@ public class BuscarControl extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        EmpleadoFormulario ef=(EmpleadoFormulario) form;
+        Formulario ef=(Formulario) form;
         pg=new PresentadorGeneral();
         request.getSession().setAttribute("pg", pg);
         
@@ -45,6 +45,7 @@ public class BuscarControl extends org.apache.struts.action.Action {
                 return mapping.findForward("Buscar");
             } else {
                 pg.setMsg("Empleado no existe");
+                request.getSession().setAttribute("id", "Empleado");
                 return mapping.findForward("Mensaje");
             }
         } else if (request.getParameter("buscar").equals("Cliente")) {
@@ -56,6 +57,7 @@ public class BuscarControl extends org.apache.struts.action.Action {
                 return mapping.findForward("Buscar");
             } else {
                 pg.setMsg("Cliente no existe");
+                request.getSession().setAttribute("id", "Cliente");
                 return mapping.findForward("Mensaje");
             }
         } else {
@@ -67,6 +69,7 @@ public class BuscarControl extends org.apache.struts.action.Action {
                 return mapping.findForward("Buscar");
             } else {
                 pg.setMsg("Proveedor no existe");
+                request.getSession().setAttribute("id", "Proveedor");
                 return mapping.findForward("Mensaje");
             }
         }

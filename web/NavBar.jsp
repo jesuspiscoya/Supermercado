@@ -69,13 +69,10 @@
                         </ul>
                     </li>
                     <li>
-                        <form action="ArticuloControl" method="post">
-                            <input type="submit" name="acceso" value="Nuevo Articulo">
-                        </form>
+                        <a href="Grabar.jsp?id=Articulo">Nuevo Articulo</a>
                     </li>
                 </ul>
             </li>
-            <!--
             <li>
                 <span>Procesos</span>
                 <div class="border"></div>
@@ -94,12 +91,14 @@
                     </li>
                 </ul>
             </li>
-            -->
             <li>
                 <span>Consultas</span>
                 <div class="border"></div>
             </li>
         </ul>
     </nav>
-    <a class="btn-salir" href="Portal.jsp">Salir</a>
+    <x:form action="ListarControl" method="post">
+        <x:hidden property="listar" value="Cerrar"/>
+        <x:submit styleClass="btn-salir" value="Salir"/>
+    </x:form>
 </header>

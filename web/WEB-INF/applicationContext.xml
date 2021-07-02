@@ -12,10 +12,12 @@
     <bean id="e" class="negocio.Empleado"></bean>
     <bean id="c" class="negocio.Cliente"></bean>
     <bean id="p" class="negocio.Proveedor"></bean>
+    <bean id="a" class="negocio.Articulo"></bean>
     <!-- JpaControllers -->
     <bean id="ejc" class="persistencia.EmpleadoJpaController"></bean>
     <bean id="cjc" class="persistencia.ClienteJpaController"></bean>
     <bean id="pjc" class="persistencia.ProveedorJpaController"></bean>
+    <bean id="ajc" class="persistencia.ArticuloJpaController"></bean>
     <!-- DaosImp -->
     <bean id="ed" class="persistencia.EmpleadoDaoImp">
         <property name="empjc" ref="ejc"></property>
@@ -25,6 +27,9 @@
     </bean>
     <bean id="pd" class="persistencia.ProveedorDaoImp">
         <property name="projc" ref="pjc"></property>
+    </bean>
+    <bean id="ad" class="persistencia.ArticuloDaoImp">
+        <property name="artjc" ref="ajc"></property>
     </bean>
     <!-- ServiciosImp -->
     <bean id="es" class="servicio.EmpleadoServicioImp">
@@ -39,6 +44,10 @@
         <property name="pro" ref="p"></property>
         <property name="proDao" ref="pd"></property>
     </bean>
+    <bean id="as" class="servicio.ArticuloServicioImp">
+        <property name="art" ref="a"></property>
+        <property name="artDao" ref="ad"></property>
+    </bean>
     <!-- Controles -->
     <bean id="/AccesoControl" class="vista.AccesoControl">
         <property name="empSer" ref="es"></property>
@@ -52,6 +61,7 @@
         <property name="empSer" ref="es"></property>
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
+        <property name="artSer" ref="as"></property>
     </bean>
     <bean id="/ListarControl" class="vista.ListarControl">
         <property name="empSer" ref="es"></property>

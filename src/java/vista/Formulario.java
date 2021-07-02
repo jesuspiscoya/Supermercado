@@ -6,9 +6,9 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-public class EmpleadoFormulario extends org.apache.struts.action.ActionForm {
+public class Formulario extends org.apache.struts.action.ActionForm {
     
-    private String codigo, nombre, tipo, direccion, usuario, password;
+    private String codigo, nombre, tipo, direccion, usuario, password, precio, stock;
 
     public String getCodigo() {
         return codigo;
@@ -57,6 +57,22 @@ public class EmpleadoFormulario extends org.apache.struts.action.ActionForm {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
     
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
@@ -77,6 +93,12 @@ public class EmpleadoFormulario extends org.apache.struts.action.ActionForm {
                errors.add("name", new ActionMessage("error.name.required"));
         if (request.getParameter("password") != null)
             if (password == null || password.length() < 1)
+               errors.add("name", new ActionMessage("error.name.required"));
+        if (request.getParameter("precio") != null)
+            if (precio == null || precio.length() < 1)
+               errors.add("name", new ActionMessage("error.name.required"));
+        if (request.getParameter("stock") != null)
+            if (stock == null || stock.length() < 1)
                errors.add("name", new ActionMessage("error.name.required"));
         return errors;
     }

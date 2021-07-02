@@ -20,7 +20,7 @@ public class AccesoControl extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        EmpleadoFormulario ef=(EmpleadoFormulario) form;
+        Formulario ef=(Formulario) form;
         Object[] fila=empSer.validar(ef.getUsuario(), ef.getPassword());
             
         if (fila!=null) {

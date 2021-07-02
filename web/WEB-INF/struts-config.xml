@@ -7,7 +7,7 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="EmpleadoFormulario" type="vista.EmpleadoFormulario"/>
+        <form-bean name="Formulario" type="vista.Formulario"/>
     
     </form-beans>
     
@@ -20,18 +20,19 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/Login.jsp" name="EmpleadoFormulario" path="/AccesoControl" scope="request" type="vista.AccesoControl">
+        <action input="/Login.jsp" name="Formulario" path="/AccesoControl" scope="request" type="vista.AccesoControl">
             <forward name="Menu" path="/Menu.jsp"/>
             <forward name="Mensaje" path="/Mensaje.jsp"/>
         </action>
-        <action input="/Buscar.jsp" name="EmpleadoFormulario" path="/BuscarControl" scope="request" type="vista.BuscarControl">
+        <action input="/Buscar.jsp" name="Formulario" path="/BuscarControl" scope="request" type="vista.BuscarControl">
             <forward name="Buscar" path="/Editar.jsp"/>
-            <forward name="Mensaje" path="/Mensaje.jsp"/>
+            <forward name="Mensaje" path="/Buscar.jsp"/>
         </action>
-        <action input="/NavBar.jsp" name="EmpleadoFormulario" path="/ListarControl" scope="request" type="vista.ListarControl">
+        <action input="/NavBar.jsp" name="Formulario" path="/ListarControl" scope="request" type="vista.ListarControl">
             <forward name="Listar" path="/Listar.jsp"/>
+            <forward name="Salir" path="/Portal.jsp"/>
         </action>
-        <action input="/Grabar.jsp" name="EmpleadoFormulario" path="/GrabarControl" scope="request" type="vista.GrabarControl">
+        <action input="/Grabar.jsp" name="Formulario" path="/GrabarControl" scope="request" type="vista.GrabarControl">
             <forward name="Grabar" path="/Grabar.jsp"/>
         </action>
         
