@@ -8,10 +8,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
 <%
-    String rol=(String)session.getAttribute("id");
-    if (request.getParameter("id") != null)
-        rol=request.getParameter("id");
     PresentadorGeneral pg=(PresentadorGeneral) session.getAttribute("pg");
+    String rol=request.getParameter("id");
+    if (session.getAttribute("id") != null)
+        rol=(String)session.getAttribute("id");
+    session.setAttribute("id", null);
     if (pg == null)
         pg=new PresentadorGeneral();
 %>
@@ -52,16 +53,16 @@
                         <x:password property="password" styleId="password"/>
                         <% } else if (rol.equals("Articulo")) { %>
                         <label for="codigo">Código:</label>
-                        <input type="text" name="codigo" placeholder="Ingrese el código" id="codigo" required>
+                        <x:text property="codigo" styleId="codigo"/>
 
                         <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" placeholder="Ingrese el nombre" id="nombre" required>
+                        <x:text property="nombre" styleId="nombre"/>
 
                         <label for="precio">Precio:</label>
-                        <input type="text" name="precio" placeholder="Ingrese el precio" id="precio" required>
+                        <x:text property="precio" styleId="precio"/>
                         
                         <label for="stock">Stock:</label>
-                        <input type="text" name="stock" placeholder="Ingrese el stock" id="stock" required>
+                        <x:text property="stock" styleId="stock"/>
                         <% } else { %>
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>
@@ -82,7 +83,7 @@
                     <% } %>
                     
                     <div class="botones">
-                        <x:hidden property="grabar" value="<%= rol %>"/>
+                        <x:hidden property="form" value="<%= rol %>"/>
                         <x:submit styleClass="btn-grabar" value="Grabar"/>
                         <% if (rol.equals("Empleado")) { %>
                         <x:button property="back" styleClass="btn-back" value="Regresar" onclick="location.href='Portal.jsp'"/>

@@ -8,7 +8,8 @@ import org.apache.struts.action.ActionMessage;
 
 public class Formulario extends org.apache.struts.action.ActionForm {
     
-    private String codigo, nombre, tipo, direccion, usuario, password, precio, stock;
+    private String codigo, nombre, tipo, direccion, usuario, password, precio, stock, cantidad, codEmp, codCli;
+    double total;
 
     public String getCodigo() {
         return codigo;
@@ -73,8 +74,51 @@ public class Formulario extends org.apache.struts.action.ActionForm {
     public void setStock(String stock) {
         this.stock = stock;
     }
+
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getCodEmp() {
+        return codEmp;
+    }
+
+    public void setCodEmp(String codEmp) {
+        this.codEmp = codEmp;
+    }
+
+    public String getCodCli() {
+        return codCli;
+    }
+
+    public void setCodCli(String codCli) {
+        this.codCli = codCli;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
     
+    @Override
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        if (request.getParameter("form") != null) {
+            if (request.getParameter("form").equals("Empleado"))
+                request.getSession().setAttribute("id", "Empleado");
+            if (request.getParameter("form").equals("Cliente"))
+                request.getSession().setAttribute("id", "Cliente");
+            if (request.getParameter("form").equals("Proveedor"))
+                request.getSession().setAttribute("id", "Proveedor");
+            if (request.getParameter("form").equals("Articulo"))
+                request.getSession().setAttribute("id", "Articulo");
+        }
         ActionErrors errors = new ActionErrors();
         if (request.getParameter("codigo") != null)
             if (codigo == null || codigo.length() < 1)
@@ -99,6 +143,9 @@ public class Formulario extends org.apache.struts.action.ActionForm {
                errors.add("name", new ActionMessage("error.name.required"));
         if (request.getParameter("stock") != null)
             if (stock == null || stock.length() < 1)
+               errors.add("name", new ActionMessage("error.name.required"));
+        if (request.getParameter("cantidad") != null)
+            if (cantidad == null || cantidad.length() < 1)
                errors.add("name", new ActionMessage("error.name.required"));
         return errors;
     }

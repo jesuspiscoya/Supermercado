@@ -119,13 +119,13 @@ h2 {
     gap: 40px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .btn-grabar, .btn-login, .btn-buscar,
 .btn-back, .btn-nuevo, .btn-listar,
 .btn-guardar, .btn-buscarCli, .btn-buscarProv,
-.btn-eliminar, .btn-agregar {
+.btn-eliminar, .btn-agregar, .btn-actualizar {
     height: 45px;
     width: 125px;
     background: #000;
@@ -139,8 +139,17 @@ h2 {
 
 .btn-agregar {
     height: 40px;
-    width: 135px;
+    width: 40px;
+    font-size: 23px;
     border-radius: 25px;
+    background: #0054D5;
+}
+
+.btn-actualizar {
+    height: 40px;
+    width: 40px;
+    font-size: 22px;
+    border-radius: 10px;
     background: #0054D5;
 }
 
@@ -148,7 +157,7 @@ h2 {
     background: #D90000;
     height: 40px;
     width: 45px;
-    font-size: 17px;
+    font-size: 22px;
     border-radius: 10px;
 }
 
@@ -170,7 +179,8 @@ h2 {
 .btn-nuevo:hover, .btn-listar:hover,
 .btn-guardar:hover, .btn-listar:hover,
 .btn-buscarProv:hover, .btn-buscarCli:hover,
-.btn-eliminar:hover, .btn-agregar:hover {
+.btn-eliminar:hover, .btn-agregar:hover,
+.btn-actualizar:hover {
     box-shadow: 0px 0px 7px rgb(12, 12, 12);
     color: #ffffff;
     transition: all 0.4s ease;
@@ -195,6 +205,10 @@ h2 {
 
 .subtabla {
     margin: 15px;
+}
+
+.final {
+    margin-bottom: 0;
 }
 
 .tabla-total, .tabla-total2 {
@@ -236,6 +250,12 @@ h2 {
     color: #263747;
     padding: 10px 0;
     text-align: center;
+}
+
+.acciones {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
 }
 
 .tabla-inicio tr:last-of-type, .tabla-lista tr:last-of-type {

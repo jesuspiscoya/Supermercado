@@ -8,8 +8,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
 <header>
-    <% Object[] fila=(Object[])session.getAttribute("validar"); %>
-    
     <div class="inicio">
         <a href="Menu.jsp">Supermercados Piscoya</a>
         <div class="border"></div>
@@ -29,7 +27,7 @@
                             <li>
                                 <x:form action="ListarControl" method="post">
                                     <x:hidden property="listar" value="Empleado"/>
-                                    <x:submit value="Listar"/>
+                                    <x:submit property="acceso" value="Listar"/>
                                 </x:form>
                             </li>
                         </ul>
@@ -46,7 +44,7 @@
                             <li>
                                 <x:form action="ListarControl" method="post">
                                     <x:hidden property="listar" value="Cliente"/>
-                                    <x:submit value="Listar"/>
+                                    <x:submit property="acceso" value="Listar"/>
                                 </x:form>
                             </li>
                         </ul>
@@ -63,7 +61,7 @@
                             <li>
                                 <x:form action="ListarControl" method="post">
                                     <x:hidden property="listar" value="Proveedor"/>
-                                    <x:submit value="Listar"/>
+                                    <x:submit property="acceso" value="Listar"/>
                                 </x:form>
                             </li>
                         </ul>
@@ -78,16 +76,14 @@
                 <div class="border"></div>
                 <ul>
                     <li>
-                        <form action="PedidoControl" method="post">
-                            <input type="hidden" name="codigo" value='<%= fila[0] %>'>
-                            <input type="submit" name="acceso" value="Nuevo Pedido">
-                        </form>
+                        <x:form action="ListarControl" method="post">
+                            <x:submit property="acceso" value="Nuevo Pedido"/>
+                        </x:form>
                     </li>
                     <li>
-                        <form action="OrdenControl" method="post">
-                            <input type="hidden" name="codigo" value='<%= fila[0] %>'>
-                            <input type="submit" name="acceso" value="Nueva Orden">
-                        </form>
+                        <x:form action="ListarControl" method="post">
+                            <x:submit property="acceso" value="Nueva Orden"/>
+                        </x:form>
                     </li>
                 </ul>
             </li>
@@ -98,7 +94,6 @@
         </ul>
     </nav>
     <x:form action="ListarControl" method="post">
-        <x:hidden property="listar" value="Cerrar"/>
-        <x:submit styleClass="btn-salir" value="Salir"/>
+        <x:submit property="acceso" styleClass="btn-salir" value="Salir"/>
     </x:form>
 </header>

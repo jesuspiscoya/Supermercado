@@ -6,6 +6,7 @@
 
 <%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Object[] acceso=(Object[])session.getAttribute("acceso"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,9 +17,6 @@
         <style>@import"css/nav.css";</style>
     </head>
     <body>
-        <!-- Scriptlets -->
-        <% Object[] fila=(Object[])session.getAttribute("validar"); %>
-        
         <!-- NavBar -->
         <jsp:include page="NavBar.jsp"/>
         
@@ -33,8 +31,8 @@
                                 <th class="tabla-titulo">Nombre</th>
                             </tr>
                             <tr>
-                                <td class="border-data"><%= fila[0] %></td>
-                                <td><%= fila[1] %></td>
+                                <td class="border-data"><%= acceso[0] %></td>
+                                <td><%= acceso[1] %></td>
                             </tr>
                         </table>
                     </div>

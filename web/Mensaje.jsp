@@ -6,6 +6,7 @@
 
 <%@page import="vista.PresentadorGeneral"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% PresentadorGeneral pg=(PresentadorGeneral)session.getAttribute("pg"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,11 +19,8 @@
         <div class="center">
             <div class="contenedor">
                 <p class="titulo">Mensaje</p>
-                <!-- Scriptlets -->
-                <% PresentadorGeneral pg=(PresentadorGeneral)session.getAttribute("pg"); %>
                 <div class="contenido">
                     <div>
-                        <!-- Expresion -->
                         <p class="mensaje"><%= pg.getMsg() %></p>
                     </div>
                     <div class="volver">

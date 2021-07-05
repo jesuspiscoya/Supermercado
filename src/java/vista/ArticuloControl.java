@@ -1,18 +1,19 @@
 package vista;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import servicio.EmpleadoServicio;
+import servicio.PedidoServicio;
 
-public class AccesoControl extends org.apache.struts.action.Action {
-    private EmpleadoServicio empSer;
+public class ArticuloControl extends org.apache.struts.action.Action {
+    private PedidoServicio pedSer;
     private PresentadorGeneral pg;
 
-    public void setEmpSer(EmpleadoServicio empSer) {
-        this.empSer = empSer;
+    public void setPedSer(PedidoServicio pedSer) {
+        this.pedSer = pedSer;
     }
 
     public void setPg(PresentadorGeneral pg) {
@@ -25,15 +26,9 @@ public class AccesoControl extends org.apache.struts.action.Action {
             throws Exception {
         
         Formulario f=(Formulario) form;
-        Object[] fila=empSer.validar(f.getUsuario(), f.getPassword());
         request.getSession().setAttribute("pg", pg);
-            
-        if (fila!=null) {
-            request.getSession().setAttribute("acceso", fila);
-            return mapping.findForward("Menu");
-        } else {
-            pg.setMsg("Acceso no permitido");
-            return mapping.findForward("Mensaje");
-        }
+        List lista=pedSer.agregarArticulo(f.getCodigo(), f.getNombre(), Double.parseDouble(f.getPrecio()));
+        pg.setListaPed(lista);
+        return mapping.findForward("Pedido");
     }
 }

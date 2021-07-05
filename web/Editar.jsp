@@ -19,7 +19,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar</title>
+        <title><%= pg.getMsg() %></title>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <style>@import"css/style.css";</style>
     </head>

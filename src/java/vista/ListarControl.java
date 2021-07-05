@@ -1,5 +1,6 @@
 package vista;
 
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -7,12 +8,16 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import servicio.ClienteServicio;
 import servicio.EmpleadoServicio;
+import servicio.OrdenServicio;
+import servicio.PedidoServicio;
 import servicio.ProveedorServicio;
 
 public class ListarControl extends org.apache.struts.action.Action {
     private EmpleadoServicio empSer;
     private ClienteServicio cliSer;
     private ProveedorServicio proSer;
+    private PedidoServicio pedSer;
+    private OrdenServicio ordSer;
     private PresentadorGeneral pg;
 
     public void setEmpSer(EmpleadoServicio empSer) {
@@ -26,27 +31,46 @@ public class ListarControl extends org.apache.struts.action.Action {
     public void setProSer(ProveedorServicio proSer) {
         this.proSer = proSer;
     }
+
+    public void setPedSer(PedidoServicio pedSer) {
+        this.pedSer = pedSer;
+    }
+
+    public void setOrdSer(OrdenServicio ordSer) {
+        this.ordSer = ordSer;
+    }
+
+    public void setPg(PresentadorGeneral pg) {
+        this.pg = pg;
+    }
     
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        pg=new PresentadorGeneral();
         request.getSession().setAttribute("pg", pg);
         
-        if (request.getParameter("listar").equals("Empleado")) {
-            pg.setLista(empSer.listar());
-            pg.setMsg("Empleados");
+        if (request.getParameter("acceso").equals("Listar")) {
+            if (request.getParameter("listar").equals("Empleado")) {
+                pg.setLista(empSer.listar());
+                pg.setMsg("Empleados");
+            } if (request.getParameter("listar").equals("Cliente")) {
+                pg.setLista(cliSer.listar());
+                pg.setMsg("Clientes");
+            } if (request.getParameter("listar").equals("Proveedor")) {
+                pg.setLista(proSer.listar());
+                pg.setMsg("Proveedor");
+            }
             return mapping.findForward("Listar");
-        } else if (request.getParameter("listar").equals("Cliente")) {
-            pg.setLista(cliSer.listar());
-            pg.setMsg("Clientes");
-            return mapping.findForward("Listar");
-        } else if (request.getParameter("listar").equals("Proveedor")) {
-            pg.setLista(proSer.listar());
-            pg.setMsg("Proveedor");
-            return mapping.findForward("Listar");
+        } else if (request.getParameter("acceso").equals("Nuevo Pedido")) {
+            Object[] cliente={"","",""};
+            pg.setCliente(cliente);
+            pg.getListaPed().clear();
+            pg.setPedido(pedSer.nuevoPedido());
+            return mapping.findForward("Pedido");
+        } else if (request.getParameter("acceso").equals("Nueva Orden")) {
+            return mapping.findForward("Orden");
         } else {
             request.getSession().invalidate();
             return mapping.findForward("Salir");

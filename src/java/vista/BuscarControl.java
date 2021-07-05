@@ -26,18 +26,21 @@ public class BuscarControl extends org.apache.struts.action.Action {
     public void setProSer(ProveedorServicio proSer) {
         this.proSer = proSer;
     }
+
+    public void setPg(PresentadorGeneral pg) {
+        this.pg = pg;
+    }
     
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        Formulario ef=(Formulario) form;
-        pg=new PresentadorGeneral();
+        Formulario f=(Formulario) form;
         request.getSession().setAttribute("pg", pg);
         
-        if (request.getParameter("buscar").equals("Empleado")) {
-            Object[] fila=empSer.buscar(ef.getCodigo());
+        if (request.getParameter("form").equals("Empleado")) {
+            Object[] fila=empSer.buscar(f.getCodigo());
             
             if (fila!=null) {
                 pg.setEmpleado(fila);
@@ -48,8 +51,8 @@ public class BuscarControl extends org.apache.struts.action.Action {
                 request.getSession().setAttribute("id", "Empleado");
                 return mapping.findForward("Mensaje");
             }
-        } else if (request.getParameter("buscar").equals("Cliente")) {
-            Object[] fila=cliSer.buscar(ef.getCodigo());
+        } else if (request.getParameter("form").equals("Cliente")) {
+            Object[] fila=cliSer.buscar(f.getCodigo());
             
             if (fila!=null) {
                 pg.setCliente(fila);
@@ -61,7 +64,7 @@ public class BuscarControl extends org.apache.struts.action.Action {
                 return mapping.findForward("Mensaje");
             }
         } else {
-            Object[] fila=proSer.buscar(ef.getCodigo());
+            Object[] fila=proSer.buscar(f.getCodigo());
             
             if (fila!=null) {
                 pg.setProveedor(fila);

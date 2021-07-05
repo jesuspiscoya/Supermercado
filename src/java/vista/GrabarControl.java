@@ -32,32 +32,31 @@ public class GrabarControl extends org.apache.struts.action.Action {
     public void setArtSer(ArticuloServicio artSer) {
         this.artSer = artSer;
     }
+
+    public void setPg(PresentadorGeneral pg) {
+        this.pg = pg;
+    }
     
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        Formulario ef=(Formulario) form;
-        pg=new PresentadorGeneral();
+        Formulario f=(Formulario) form;
         request.getSession().setAttribute("pg", pg);
         
-        if (request.getParameter("grabar").equals("Empleado")) {
-            pg.setMsg(empSer.grabar(ef.getCodigo(), ef.getNombre(), ef.getTipo(), ef.getUsuario(), ef.getPassword()));
-            request.getSession().setAttribute("id", "Empleado");
-            return mapping.findForward("Grabar");
-        } else if (request.getParameter("grabar").equals("Cliente")) {
-            pg.setMsg(cliSer.grabar(ef.getCodigo(), ef.getNombre(), ef.getDireccion()));
-            request.getSession().setAttribute("id", "Cliente");
-            return mapping.findForward("Grabar");
-        } else if (request.getParameter("grabar").equals("Proveedor")) {
-            pg.setMsg(proSer.grabar(ef.getCodigo(), ef.getNombre(), ef.getDireccion()));
-            request.getSession().setAttribute("id", "Proveedor");
-            return mapping.findForward("Grabar");
+        if (request.getParameter("form").equals("Empleado")) {
+            pg.setMsg(empSer.grabar(f.getCodigo(), f.getNombre(), f.getTipo(), f.getUsuario(), f.getPassword()));
+            return mapping.findForward("GrabarE");
+        } else if (request.getParameter("form").equals("Cliente")) {
+            pg.setMsg(cliSer.grabar(f.getCodigo(), f.getNombre(), f.getDireccion()));
+            return mapping.findForward("GrabarC");
+        } else if (request.getParameter("form").equals("Proveedor")) {
+            pg.setMsg(proSer.grabar(f.getCodigo(), f.getNombre(), f.getDireccion()));
+            return mapping.findForward("GrabarP");
         } else {
-            pg.setMsg(artSer.grabar(ef.getCodigo(), ef.getNombre(), Double.parseDouble(ef.getPrecio()), Integer.parseInt(ef.getStock())));
-            request.getSession().setAttribute("id", "Articulo");
-            return mapping.findForward("Grabar");
+            pg.setMsg(artSer.grabar(f.getCodigo(), f.getNombre(), Double.parseDouble(f.getPrecio()), Integer.parseInt(f.getStock())));
+            return mapping.findForward("GrabarA");
         }
     }
 }

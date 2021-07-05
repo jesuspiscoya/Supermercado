@@ -31,7 +31,7 @@ public class ArticuloDaoImp implements ArticuloDao {
         
         for (int i = 0; i < lis.size(); i++) {
             Articulo art=(Articulo)lis.get(i);
-            Object[] fila=new Object[3];
+            Object[] fila=new Object[4];
             fila[0]=art.getCod();
             fila[1]=art.getNom();
             fila[2]=art.getPre();

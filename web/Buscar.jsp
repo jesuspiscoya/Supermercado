@@ -8,12 +8,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
 <%
-    String rol=(String)session.getAttribute("id");
-    if (request.getParameter("id") != null)
-        rol=request.getParameter("id");
     PresentadorGeneral pg=(PresentadorGeneral) session.getAttribute("pg");
-    if (pg == null)
-        pg=new PresentadorGeneral();
+    String rol=request.getParameter("id");
+    if (session.getAttribute("id") != null)
+        rol=(String)session.getAttribute("id");
+    session.setAttribute("id", null);
 %>
 <!DOCTYPE html>
 <html>
@@ -37,11 +36,10 @@
                         <x:text property="codigo" styleId="codigo"/>
                     </div>
                     <div class="botones">
-                        <x:hidden property="buscar" value="<%= rol %>"/>
+                        <x:hidden property="form" value="<%= rol %>"/>
                         <x:submit styleClass="btn-buscar" value="Buscar"/>
-                        <x:button property="back" styleClass="btn-back" onclick="location.href='Menu.jsp'" value="Regresar"/>
+                        <x:button styleClass="btn-back" onclick="location.href='Menu.jsp'" value="Regresar" property=""/>
                     </div>
-                    
                     <% if (!pg.getMsg().equals("")) { %>
                         <div class="msg-noFind">
                             <span><%= pg.getMsg() %></span>

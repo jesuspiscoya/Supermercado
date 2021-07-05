@@ -9,15 +9,20 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
     <!-- Negocios -->
+    <bean id="pg" class="vista.PresentadorGeneral"></bean>
     <bean id="e" class="negocio.Empleado"></bean>
     <bean id="c" class="negocio.Cliente"></bean>
     <bean id="p" class="negocio.Proveedor"></bean>
     <bean id="a" class="negocio.Articulo"></bean>
+    <bean id="pe" class="negocio.Pedido"></bean>
+    <!--bean id="o" class="negocio.Orden"></bean-->
     <!-- JpaControllers -->
     <bean id="ejc" class="persistencia.EmpleadoJpaController"></bean>
     <bean id="cjc" class="persistencia.ClienteJpaController"></bean>
     <bean id="pjc" class="persistencia.ProveedorJpaController"></bean>
     <bean id="ajc" class="persistencia.ArticuloJpaController"></bean>
+    <bean id="pejc" class="persistencia.PedidoJpaController"></bean>
+    <!--bean id="ojc" class="persistencia.OrdenJpaController"></bean-->
     <!-- DaosImp -->
     <bean id="ed" class="persistencia.EmpleadoDaoImp">
         <property name="empjc" ref="ejc"></property>
@@ -31,6 +36,12 @@
     <bean id="ad" class="persistencia.ArticuloDaoImp">
         <property name="artjc" ref="ajc"></property>
     </bean>
+    <bean id="ped" class="persistencia.PedidoDaoImp">
+        <property name="pedjc" ref="pejc"></property>
+    </bean>
+    <!--bean id="od" class="persistencia.OrdenDaoImp">
+        <property name="ordjc" ref="ojc"></property>
+    </bean-->
     <!-- ServiciosImp -->
     <bean id="es" class="servicio.EmpleadoServicioImp">
         <property name="emp" ref="e"></property>
@@ -48,25 +59,51 @@
         <property name="art" ref="a"></property>
         <property name="artDao" ref="ad"></property>
     </bean>
+    <bean id="pes" class="servicio.PedidoServicioImp">
+        <property name="pedDao" ref="ped"></property>
+        <property name="cliDao" ref="cd"></property>
+        <property name="artDao" ref="ad"></property>
+        <property name="ped" ref="pe"></property>
+        <property name="emp" ref="e"></property>
+        <property name="cli" ref="c"></property>
+    </bean>
+    <!--bean id="os" class="servicio.OrdenServicioImp">
+        <property name="ord" ref="o"></property>
+        <property name="ordDao" ref="od"></property>
+    </bean-->
     <!-- Controles -->
     <bean id="/AccesoControl" class="vista.AccesoControl">
         <property name="empSer" ref="es"></property>
+        <property name="pg" ref="pg"></property>
     </bean>
     <bean id="/BuscarControl" class="vista.BuscarControl">
         <property name="empSer" ref="es"></property>
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
+        <property name="pg" ref="pg"></property>
     </bean>
     <bean id="/GrabarControl" class="vista.GrabarControl">
         <property name="empSer" ref="es"></property>
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
         <property name="artSer" ref="as"></property>
+        <property name="pg" ref="pg"></property>
     </bean>
     <bean id="/ListarControl" class="vista.ListarControl">
         <property name="empSer" ref="es"></property>
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
+        <property name="pedSer" ref="pes"></property>
+        <!--property name="ordSer" ref="os"></property-->
+        <property name="pg" ref="pg"></property>
+    </bean>
+    <bean id="/PedidoControl" class="vista.PedidoControl">
+        <property name="pedSer" ref="pes"></property>
+        <property name="pg" ref="pg"></property>
+    </bean>
+    <bean id="/ArticuloControl" class="vista.ArticuloControl">
+        <property name="pedSer" ref="pes"></property>
+        <property name="pg" ref="pg"></property>
     </bean>
 
 </beans>

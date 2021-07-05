@@ -8,7 +8,6 @@
 <struts-config>
     <form-beans>
         <form-bean name="Formulario" type="vista.Formulario"/>
-    
     </form-beans>
     
     <global-exceptions>
@@ -30,10 +29,22 @@
         </action>
         <action input="/NavBar.jsp" name="Formulario" path="/ListarControl" scope="request" type="vista.ListarControl">
             <forward name="Listar" path="/Listar.jsp"/>
+            <forward name="Pedido" path="/Pedido.jsp"/>
+            <forward name="Orden" path="/Orden.jsp"/>
             <forward name="Salir" path="/Portal.jsp"/>
         </action>
         <action input="/Grabar.jsp" name="Formulario" path="/GrabarControl" scope="request" type="vista.GrabarControl">
-            <forward name="Grabar" path="/Grabar.jsp"/>
+            <forward name="GrabarE" path="/Grabar.jsp?id=Empleado"/>
+            <forward name="GrabarC" path="/Grabar.jsp?id=Cliente"/>
+            <forward name="GrabarP" path="/Grabar.jsp?id=Proveedor"/>
+            <forward name="GrabarA" path="/Grabar.jsp?id=Articulo"/>
+        </action>
+        <action input="/Pedido.jsp" name="Formulario" path="/PedidoControl" scope="request" type="vista.PedidoControl">
+            <forward name="Pedido" path="/Pedido.jsp"/>
+            <forward name="Articulos" path="/Listar.jsp"/>
+        </action>
+        <action input="/Listar.jsp" name="Formulario" path="/ArticuloControl" scope="request" type="vista.ArticuloControl">
+            <forward name="Pedido" path="/Pedido.jsp"/>
         </action>
         
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
