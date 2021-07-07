@@ -79,8 +79,7 @@
                     <div class="msg-grabar">
                         <span><%= pg.getMsg() %></span>
                     </div>
-                    <% pg.setMsg(""); %>
-                    <% } %>
+                    <% } pg.setMsg(""); %>
                     
                     <div class="botones">
                         <x:hidden property="form" value="<%= rol %>"/>

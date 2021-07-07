@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionMessage;
 
 public class Formulario extends org.apache.struts.action.ActionForm {
     
-    private String codigo, nombre, tipo, direccion, usuario, password, precio, stock, cantidad, codEmp, codCli;
+    private String codigo, nombre, tipo, direccion, usuario, password, precio, stock, cantidad, codEmp, cod;
     double total;
 
     public String getCodigo() {
@@ -91,12 +91,12 @@ public class Formulario extends org.apache.struts.action.ActionForm {
         this.codEmp = codEmp;
     }
 
-    public String getCodCli() {
-        return codCli;
+    public String getCod() {
+        return cod;
     }
 
-    public void setCodCli(String codCli) {
-        this.codCli = codCli;
+    public void setCod(String cod) {
+        this.cod = cod;
     }
 
     public double getTotal() {

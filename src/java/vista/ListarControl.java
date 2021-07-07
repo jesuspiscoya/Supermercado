@@ -1,6 +1,5 @@
 package vista;
 
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -63,14 +62,20 @@ public class ListarControl extends org.apache.struts.action.Action {
                 pg.setMsg("Proveedor");
             }
             return mapping.findForward("Listar");
-        } else if (request.getParameter("acceso").equals("Nuevo Pedido")) {
-            Object[] cliente={"","",""};
-            pg.setCliente(cliente);
-            pg.getListaPed().clear();
-            pg.setPedido(pedSer.nuevoPedido());
-            return mapping.findForward("Pedido");
-        } else if (request.getParameter("acceso").equals("Nueva Orden")) {
-            return mapping.findForward("Orden");
+        } else if (request.getParameter("acceso") != null) {
+            if (request.getParameter("acceso").equals("Nuevo Pedido")) {
+                Object[] cliente={"","",""};
+                pg.setCliente(cliente);
+                pg.getLista().clear();
+                pg.setPedOrd(pedSer.nuevoPedido());
+                request.getSession().setAttribute("rol", "Pedido");
+            } else {
+                Object[] proveedor={"","",""};
+                pg.setProveedor(proveedor);
+                pg.getLista().clear();
+                pg.setPedOrd(ordSer.nuevaOrden());
+                request.getSession().setAttribute("rol", "Orden");
+            } return mapping.findForward("PedOrd");
         } else {
             request.getSession().invalidate();
             return mapping.findForward("Salir");

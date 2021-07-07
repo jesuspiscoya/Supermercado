@@ -9,8 +9,12 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="x" %>
 <%
     PresentadorGeneral pg=(PresentadorGeneral)session.getAttribute("pg");
+    String rol=request.getParameter("id");
     Object[] fila=new Object[5];
-    if (pg.getMsg().equals("Cliente"))
+    if (session.getAttribute("id") != null)
+        rol=(String)session.getAttribute("id");
+    session.setAttribute("id", null);
+    if (rol.equals("Cliente"))
         fila=pg.getCliente();
     else
         fila=pg.getProveedor();
@@ -19,17 +23,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><%= pg.getMsg() %></title>
+        <title><%= rol %></title>
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <style>@import"css/style.css";</style>
     </head>
     <body>
-        <p class="titulo-prin">Editar <%= pg.getMsg() %></p>
+        <p class="titulo-prin">Editar <%= rol %></p>
         <div class="center">
             <form class="formEditar" action="" method="post">
                 <h2>Editar Usuario</h2>
                 <div class="datos">
-                    <% if (pg.getMsg().equals("Empleado")) { %>
+                    <% if (rol.equals("Empleado")) { %>
                     <% fila=pg.getEmpleado(); %>
                     <label for="codigo">Código:</label>
                     <input type="text" name="codigo" placeholder="Escriba su código" value="<%= fila[0] %>" id="codigo" required>
@@ -59,7 +63,6 @@
                 <div class="botones">
                     <input type="submit" name="acceso" class="btn-buscar" value="Buscar">
                     <input type="button" name="back" class="btn-back" value="Regresar" onclick="location.href='Buscar.jsp?id=<%= pg.getMsg() %>'">
-                    <% pg.setMsg(""); %>
                 </div>
             </form>
         </div>

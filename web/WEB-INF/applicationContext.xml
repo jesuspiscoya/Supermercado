@@ -15,14 +15,14 @@
     <bean id="p" class="negocio.Proveedor"></bean>
     <bean id="a" class="negocio.Articulo"></bean>
     <bean id="pe" class="negocio.Pedido"></bean>
-    <!--bean id="o" class="negocio.Orden"></bean-->
+    <bean id="o" class="negocio.Orden"></bean>
     <!-- JpaControllers -->
     <bean id="ejc" class="persistencia.EmpleadoJpaController"></bean>
     <bean id="cjc" class="persistencia.ClienteJpaController"></bean>
     <bean id="pjc" class="persistencia.ProveedorJpaController"></bean>
     <bean id="ajc" class="persistencia.ArticuloJpaController"></bean>
     <bean id="pejc" class="persistencia.PedidoJpaController"></bean>
-    <!--bean id="ojc" class="persistencia.OrdenJpaController"></bean-->
+    <bean id="ojc" class="persistencia.OrdenJpaController"></bean>
     <!-- DaosImp -->
     <bean id="ed" class="persistencia.EmpleadoDaoImp">
         <property name="empjc" ref="ejc"></property>
@@ -39,9 +39,9 @@
     <bean id="ped" class="persistencia.PedidoDaoImp">
         <property name="pedjc" ref="pejc"></property>
     </bean>
-    <!--bean id="od" class="persistencia.OrdenDaoImp">
+    <bean id="od" class="persistencia.OrdenDaoImp">
         <property name="ordjc" ref="ojc"></property>
-    </bean-->
+    </bean>
     <!-- ServiciosImp -->
     <bean id="es" class="servicio.EmpleadoServicioImp">
         <property name="emp" ref="e"></property>
@@ -67,10 +67,14 @@
         <property name="emp" ref="e"></property>
         <property name="cli" ref="c"></property>
     </bean>
-    <!--bean id="os" class="servicio.OrdenServicioImp">
-        <property name="ord" ref="o"></property>
+    <bean id="os" class="servicio.OrdenServicioImp">
         <property name="ordDao" ref="od"></property>
-    </bean-->
+        <property name="proDao" ref="pd"></property>
+        <property name="artDao" ref="ad"></property>
+        <property name="ord" ref="o"></property>
+        <property name="emp" ref="e"></property>
+        <property name="pro" ref="p"></property>
+    </bean>
     <!-- Controles -->
     <bean id="/AccesoControl" class="vista.AccesoControl">
         <property name="empSer" ref="es"></property>
@@ -94,11 +98,12 @@
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
         <property name="pedSer" ref="pes"></property>
-        <!--property name="ordSer" ref="os"></property-->
+        <property name="ordSer" ref="os"></property>
         <property name="pg" ref="pg"></property>
     </bean>
-    <bean id="/PedidoControl" class="vista.PedidoControl">
+    <bean id="/PedOrdControl" class="vista.PedOrdControl">
         <property name="pedSer" ref="pes"></property>
+        <property name="ordSer" ref="os"></property>
         <property name="pg" ref="pg"></property>
     </bean>
     <bean id="/ArticuloControl" class="vista.ArticuloControl">

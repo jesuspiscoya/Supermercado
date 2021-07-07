@@ -3,11 +3,11 @@ package servicio;
 import java.util.List;
 
 public interface OrdenServicio {
-    public Object[] nuevaOrden(String cod);
-    public List agregarArticulo(String cod, String nom, String prec, String cant);
-    public List quitarOrden(String cod);
-    public List listarArticulos();
+    public Object[] nuevaOrden();
     public Object[] buscarProveedor(String cod);
-    public String grabarOrden(String cod);
-    public List getNum();
+    public List listarArticulos();
+    public List agregarArticulo(String cod, String nom, double prec);
+    public List actualizarArticulo(String cod, int cantidad);
+    public List quitarArticulo(String cod);
+    public String grabarOrden(String codEmp, String codPro, double total);
 }

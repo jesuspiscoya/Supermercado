@@ -44,8 +44,7 @@
                         <div class="msg-noFind">
                             <span><%= pg.getMsg() %></span>
                         </div>
-                    <% pg.setMsg(""); %>
-                    <% } %>
+                    <% } pg.setMsg(""); %>
                 </x:form>
             </div>
         </div>

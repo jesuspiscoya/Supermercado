@@ -41,10 +41,9 @@ public class BuscarControl extends org.apache.struts.action.Action {
         
         if (request.getParameter("form").equals("Empleado")) {
             Object[] fila=empSer.buscar(f.getCodigo());
-            
             if (fila!=null) {
                 pg.setEmpleado(fila);
-                pg.setMsg("Empleado");
+                request.getSession().setAttribute("id", "Empleado");
                 return mapping.findForward("Buscar");
             } else {
                 pg.setMsg("Empleado no existe");
@@ -53,10 +52,9 @@ public class BuscarControl extends org.apache.struts.action.Action {
             }
         } else if (request.getParameter("form").equals("Cliente")) {
             Object[] fila=cliSer.buscar(f.getCodigo());
-            
             if (fila!=null) {
                 pg.setCliente(fila);
-                pg.setMsg("Cliente");
+                request.getSession().setAttribute("id", "Empleado");
                 return mapping.findForward("Buscar");
             } else {
                 pg.setMsg("Cliente no existe");
@@ -65,10 +63,9 @@ public class BuscarControl extends org.apache.struts.action.Action {
             }
         } else {
             Object[] fila=proSer.buscar(f.getCodigo());
-            
             if (fila!=null) {
                 pg.setProveedor(fila);
-                pg.setMsg("Proveedor");
+                request.getSession().setAttribute("id", "Empleado");
                 return mapping.findForward("Buscar");
             } else {
                 pg.setMsg("Proveedor no existe");

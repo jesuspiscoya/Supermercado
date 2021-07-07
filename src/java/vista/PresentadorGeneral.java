@@ -9,14 +9,8 @@ public class PresentadorGeneral {
     private Object[] empleado={"","","","",""};
     private Object[] cliente={"","",""};
     private Object[] proveedor={"","",""};
-    private Object[] pedido={"",""};
-    private Object[] orden={"",""};
+    private Object[] pedOrd={"",""};
     private List lista=new ArrayList();
-    private List listaPed=new ArrayList();
-
-    public PresentadorGeneral() {
-        lista.add(empleado);
-    }
 
     public String getMsg() {
         return msg;
@@ -58,20 +52,12 @@ public class PresentadorGeneral {
         this.proveedor = proveedor;
     }
 
-    public Object[] getPedido() {
-        return pedido;
+    public Object[] getPedOrd() {
+        return pedOrd;
     }
 
-    public void setPedido(Object[] pedido) {
-        this.pedido = pedido;
-    }
-
-    public Object[] getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Object[] orden) {
-        this.orden = orden;
+    public void setPedOrd(Object[] pedOrd) {
+        this.pedOrd = pedOrd;
     }
 
     public List getLista() {
@@ -80,13 +66,5 @@ public class PresentadorGeneral {
 
     public void setLista(List lista) {
         this.lista = lista;
-    }
-
-    public List getListaPed() {
-        return listaPed;
-    }
-
-    public void setListaPed(List listaPed) {
-        this.listaPed = listaPed;
     }
 }

@@ -28,7 +28,7 @@ public class ArticuloControl extends org.apache.struts.action.Action {
         Formulario f=(Formulario) form;
         request.getSession().setAttribute("pg", pg);
         List lista=pedSer.agregarArticulo(f.getCodigo(), f.getNombre(), Double.parseDouble(f.getPrecio()));
-        pg.setListaPed(lista);
-        return mapping.findForward("Pedido");
+        pg.setLista(lista);
+        return mapping.findForward("PedOrd");
     }
 }

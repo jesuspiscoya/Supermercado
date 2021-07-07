@@ -47,16 +47,16 @@ public class GrabarControl extends org.apache.struts.action.Action {
         
         if (request.getParameter("form").equals("Empleado")) {
             pg.setMsg(empSer.grabar(f.getCodigo(), f.getNombre(), f.getTipo(), f.getUsuario(), f.getPassword()));
-            return mapping.findForward("GrabarE");
+            request.getSession().setAttribute("id", "Empleado");
         } else if (request.getParameter("form").equals("Cliente")) {
             pg.setMsg(cliSer.grabar(f.getCodigo(), f.getNombre(), f.getDireccion()));
-            return mapping.findForward("GrabarC");
+            request.getSession().setAttribute("id", "Cliente");
         } else if (request.getParameter("form").equals("Proveedor")) {
             pg.setMsg(proSer.grabar(f.getCodigo(), f.getNombre(), f.getDireccion()));
-            return mapping.findForward("GrabarP");
+            request.getSession().setAttribute("id", "Proveedor");
         } else {
             pg.setMsg(artSer.grabar(f.getCodigo(), f.getNombre(), Double.parseDouble(f.getPrecio()), Integer.parseInt(f.getStock())));
-            return mapping.findForward("GrabarA");
-        }
+            request.getSession().setAttribute("id", "Articulo");
+        } return mapping.findForward("Grabar");
     }
 }
