@@ -38,17 +38,19 @@
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>
                     </div>
-                    <div class="botones">
-                        <x:hidden property="form" value="<%= rol %>"/>
-                        <x:submit styleClass="btn-buscar" value="Buscar"/>
-                        <x:button styleClass="btn-back" onclick="location.href='Menu.jsp'" value="Regresar" property=""/>
-                    </div>
+                    
                     <% if (!pg.getMsg().equals("")) { %>
                         <div class="msg-noFind">
                             <span><%= pg.getMsg() %></span>
                             <x:messages id="m" property="codigo">${m}</x:messages>
                         </div>
                     <% } pg.setMsg(""); %>
+                    
+                    <div class="botones">
+                        <x:hidden property="form" value="<%= rol %>"/>
+                        <x:submit styleClass="btn-buscar" value="Buscar"/>
+                        <x:button styleClass="btn-back" onclick="location.href='Menu.jsp'" value="Regresar" property=""/>
+                    </div>
                 </x:form>
             </div>
         </div>

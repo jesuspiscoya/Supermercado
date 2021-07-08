@@ -92,68 +92,7 @@ public class EmpleadoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Empleado persistentEmpleado = em.find(Empleado.class, empleado.getCod());
-            List<Orden> ordenListOld = persistentEmpleado.getOrdenList();
-            List<Orden> ordenListNew = empleado.getOrdenList();
-            List<Pedido> pedidoListOld = persistentEmpleado.getPedidoList();
-            List<Pedido> pedidoListNew = empleado.getPedidoList();
-            List<String> illegalOrphanMessages = null;
-            for (Orden ordenListOldOrden : ordenListOld) {
-                if (!ordenListNew.contains(ordenListOldOrden)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Orden " + ordenListOldOrden + " since its codemp field is not nullable.");
-                }
-            }
-            for (Pedido pedidoListOldPedido : pedidoListOld) {
-                if (!pedidoListNew.contains(pedidoListOldPedido)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Pedido " + pedidoListOldPedido + " since its codemp field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            List<Orden> attachedOrdenListNew = new ArrayList<Orden>();
-            for (Orden ordenListNewOrdenToAttach : ordenListNew) {
-                ordenListNewOrdenToAttach = em.getReference(ordenListNewOrdenToAttach.getClass(), ordenListNewOrdenToAttach.getNum());
-                attachedOrdenListNew.add(ordenListNewOrdenToAttach);
-            }
-            ordenListNew = attachedOrdenListNew;
-            empleado.setOrdenList(ordenListNew);
-            List<Pedido> attachedPedidoListNew = new ArrayList<Pedido>();
-            for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
-                pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getNum());
-                attachedPedidoListNew.add(pedidoListNewPedidoToAttach);
-            }
-            pedidoListNew = attachedPedidoListNew;
-            empleado.setPedidoList(pedidoListNew);
             empleado = em.merge(empleado);
-            for (Orden ordenListNewOrden : ordenListNew) {
-                if (!ordenListOld.contains(ordenListNewOrden)) {
-                    Empleado oldCodempOfOrdenListNewOrden = ordenListNewOrden.getCodemp();
-                    ordenListNewOrden.setCodemp(empleado);
-                    ordenListNewOrden = em.merge(ordenListNewOrden);
-                    if (oldCodempOfOrdenListNewOrden != null && !oldCodempOfOrdenListNewOrden.equals(empleado)) {
-                        oldCodempOfOrdenListNewOrden.getOrdenList().remove(ordenListNewOrden);
-                        oldCodempOfOrdenListNewOrden = em.merge(oldCodempOfOrdenListNewOrden);
-                    }
-                }
-            }
-            for (Pedido pedidoListNewPedido : pedidoListNew) {
-                if (!pedidoListOld.contains(pedidoListNewPedido)) {
-                    Empleado oldCodempOfPedidoListNewPedido = pedidoListNewPedido.getCodemp();
-                    pedidoListNewPedido.setCodemp(empleado);
-                    pedidoListNewPedido = em.merge(pedidoListNewPedido);
-                    if (oldCodempOfPedidoListNewPedido != null && !oldCodempOfPedidoListNewPedido.equals(empleado)) {
-                        oldCodempOfPedidoListNewPedido.getPedidoList().remove(pedidoListNewPedido);
-                        oldCodempOfPedidoListNewPedido = em.merge(oldCodempOfPedidoListNewPedido);
-                    }
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();

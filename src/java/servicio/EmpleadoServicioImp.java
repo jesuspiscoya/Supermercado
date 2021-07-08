@@ -43,7 +43,6 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
         emp.setTip(tip);
         emp.setUsu(usu);
         emp.setPass(pass);
-        System.out.println("SERVICIO: "+empDao.actualizar(emp));
         return empDao.actualizar(emp);
     }
 

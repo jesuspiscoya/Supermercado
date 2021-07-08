@@ -78,13 +78,12 @@
                         <% String s; if (carrito[2]=="") s=""; else s="S/ "; %>
                         <tr>
                             <x:form action="PedOrdControl" method="post">
-                                <td><%= carrito[0] %></td>
+                                <td><x:hidden property="codigo" value="<%= carrito[0].toString() %>"/><%= carrito[0] %></td>
                                 <td><%= carrito[1] %></td>
                                 <td><%= s+carrito[2] %></td>
-                                <td><x:text property="cantidad" styleClass="input-cantidad" value="<%= carrito[3].toString() %>"/></td>
+                                <td><x:text property="cantidad" styleClass="input-cantidad" value="<%= carrito[3].toString() %>" onclick="this.value=''"/></td>
                                 <td><%= s+carrito[4] %></td>
                                 <td class="acciones">
-                                <x:hidden property="codigo" value="<%= carrito[0].toString() %>"/>
                                 <x:hidden property="acceso" value="Actualizar Articulo"/>
                                 <button type="submit" class="btn-actualizar"><i class="fas fa-check"></i></button>
                             </x:form>
@@ -130,12 +129,14 @@
                         </tr>
                     </table>
                 </div>
+                        
                 <% if (!pg.getMsg().equals("")) { %>
                     <div class="msg-noFind">
                         <span><%= pg.getMsg() %></span>
                         <x:messages id="m" property="codigo">${m}</x:messages>
                     </div>
                 <% } pg.setMsg(""); %>
+                
                 <div class="botones">
                     <input type="button" class="btn-back" value="Regresar" onclick="location.href='Menu.jsp'">
                 </div>

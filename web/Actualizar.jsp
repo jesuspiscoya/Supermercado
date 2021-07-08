@@ -11,8 +11,6 @@
     PresentadorGeneral pg=(PresentadorGeneral)session.getAttribute("pg");
     String rol=(String)session.getAttribute("id");
     session.setAttribute("id", null);
-    if (pg == null)
-        pg=new PresentadorGeneral();
     Object[] fila=new Object[5];
     if (rol.equals("Empleado"))
         fila=pg.getEmpleado();
@@ -36,9 +34,6 @@
                 <h2>Editar Usuario</h2>
                 <div class="datos">
                     <% if (rol.equals("Empleado")) { %>
-                    <label for="codigo">Código:</label>
-                    <x:text property="codigo" value="<%= fila[0].toString() %>" styleId="codigo"/>
-                    
                     <label for="nombre">Nombre:</label>
                     <x:text property="nombre" value="<%= fila[1].toString() %>" styleId="nombre"/>
 
@@ -62,8 +57,16 @@
                     <% } %>
                 </div>
                 
+                <% if (!pg.getMsg().equals("")) { %>
+                    <div class="msg-noFind">
+                        <span><%= pg.getMsg() %></span>
+                        <x:messages id="m" property="codigo">${m}</x:messages>
+                    </div>
+                <% } pg.setMsg(""); %>
+                
                 <div class="botones">
                     <x:hidden property="form" value="<%= rol %>"/>
+                    <x:hidden property="codigo" value="<%= fila[0].toString() %>"/>
                     <x:submit styleClass="btn-buscar" property="acceso"  value="Actualizar"/>
                     <% if (rol.equals("Empleado")) { %>
                     <x:button styleClass="btn-back" value="Regresar" onclick="location.href='Buscar.jsp?id=Empleado'" property=""/>

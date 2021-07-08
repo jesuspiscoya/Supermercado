@@ -39,16 +39,17 @@ public class ActualizarControl extends org.apache.struts.action.Action {
         Formulario f=(Formulario) form;
         request.getSession().setAttribute("pg", pg);
         
-        System.out.println("FORMMM: "+request.getParameter("form"));
-        
         if (request.getParameter("form").equals("Empleado")) {
             pg.setMsg(empSer.actualizar(f.getCodigo(), f.getNombre(), f.getTipo(), f.getUsuario(), f.getPassword()));
+            pg.setEmpleado(empSer.buscar(f.getCodigo()));
             request.getSession().setAttribute("id", "Empleado");
         } else if (request.getParameter("form").equals("Cliente")) {
             pg.setMsg(cliSer.actualizar(f.getCodigo(), f.getNombre(), f.getDireccion()));
+            pg.setCliente(cliSer.buscar(f.getCodigo()));
             request.getSession().setAttribute("id", "Cliente");
         } else {
             pg.setMsg(proSer.actualizar(f.getCodigo(), f.getNombre(), f.getDireccion()));
+            pg.setProveedor(proSer.buscar(f.getCodigo()));
             request.getSession().setAttribute("id", "Proveedor");
         } return mapping.findForward("Actualizar");
     }
