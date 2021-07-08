@@ -17,9 +17,11 @@
     Object[] fila=new Object[5];
     Object[] pedidoOrden=pg.getPedOrd();
     if (rol.equals("Pedido")) {
+        pg.setMsg(" ");
         titulo="Nota de Pedido";
         fila=pg.getCliente();
     } else {
+        pg.setMsg(" ");
         titulo="Orden de Compra";
         fila=pg.getProveedor();
     }
@@ -131,6 +133,7 @@
                 <% if (!pg.getMsg().equals("")) { %>
                     <div class="msg-noFind">
                         <span><%= pg.getMsg() %></span>
+                        <x:messages id="m" property="codigo">${m}</x:messages>
                     </div>
                 <% } pg.setMsg(""); %>
                 <div class="botones">

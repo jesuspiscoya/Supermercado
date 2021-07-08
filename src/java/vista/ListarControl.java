@@ -62,7 +62,7 @@ public class ListarControl extends org.apache.struts.action.Action {
                 pg.setMsg("Proveedor");
             }
             return mapping.findForward("Listar");
-        } else if (request.getParameter("acceso") != null) {
+        } else if (!request.getParameter("acceso").equals("Salir")) {
             if (request.getParameter("acceso").equals("Nuevo Pedido")) {
                 Object[] cliente={"","",""};
                 pg.setCliente(cliente);

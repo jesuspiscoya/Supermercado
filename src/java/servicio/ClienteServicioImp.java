@@ -28,6 +28,14 @@ public class ClienteServicioImp implements ClienteServicio {
         cli.setDir(dir);
         return cliDao.grabar(cli);
     }
+
+    @Override
+    public String actualizar(String cod, String nom, String dir) {
+        cli.setCod(cod);
+        cli.setNom(nom);
+        cli.setDir(dir);
+        return cliDao.actualizar(cli);
+    }
     
     @Override
     public List listar() {

@@ -120,33 +120,42 @@ public class Formulario extends org.apache.struts.action.ActionForm {
                 request.getSession().setAttribute("id", "Articulo");
         }
         ActionErrors errors = new ActionErrors();
-        if (request.getParameter("codigo") != null)
-            if (codigo == null || codigo.length() < 1)
-                errors.add("name", new ActionMessage("error.name.required"));
+        if (request.getParameter("codigo") != null) {
+            if (codigo == null || codigo.length() < 1) {
+                if (request.getSession().getAttribute("rol") != null) {
+                    if (((String)request.getSession().getAttribute("rol")).equals("Pedido"))
+                        errors.add("codigo", new ActionMessage("error.codCli"));
+                    else
+                        errors.add("codigo", new ActionMessage("error.codPro"));
+                } else 
+                    errors.add("codigo", new ActionMessage("error.codigo"));
+                request.getSession().setAttribute("error", "Codigo");
+            }
+        }
         if (request.getParameter("nombre") != null)
             if (nombre == null || nombre.length() < 1)
-                errors.add("name", new ActionMessage("error.name.required"));
+                errors.add("nombre", new ActionMessage("error.nombre"));
         if (request.getParameter("tipo") != null)
             if (tipo == null || tipo.length() < 1)
-                errors.add("name", new ActionMessage("error.name.required"));
+                errors.add("tipo", new ActionMessage("error.tipo"));
         if (request.getParameter("direccion") != null)
             if (direccion == null || direccion.length() < 1)
-                errors.add("name", new ActionMessage("error.name.required"));
+                errors.add("direccion", new ActionMessage("error.direccion"));
         if (request.getParameter("usuario") != null)
             if (usuario == null || usuario.length() < 1)
-               errors.add("name", new ActionMessage("error.name.required"));
+               errors.add("usuario", new ActionMessage("error.usuario"));
         if (request.getParameter("password") != null)
             if (password == null || password.length() < 1)
-               errors.add("name", new ActionMessage("error.name.required"));
+               errors.add("password", new ActionMessage("error.password"));
         if (request.getParameter("precio") != null)
             if (precio == null || precio.length() < 1)
-               errors.add("name", new ActionMessage("error.name.required"));
+               errors.add("precio", new ActionMessage("error.precio"));
         if (request.getParameter("stock") != null)
             if (stock == null || stock.length() < 1)
-               errors.add("name", new ActionMessage("error.name.required"));
+               errors.add("stock", new ActionMessage("error.stock"));
         if (request.getParameter("cantidad") != null)
             if (cantidad == null || cantidad.length() < 1)
-               errors.add("name", new ActionMessage("error.name.required"));
+               errors.add("cantidad", new ActionMessage("error.cantidad"));
         return errors;
     }
 }

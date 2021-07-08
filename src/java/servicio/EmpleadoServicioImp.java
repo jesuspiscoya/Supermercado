@@ -37,8 +37,18 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
     }
 
     @Override
+    public String actualizar(String cod, String nom, String tip, String usu, String pass) {
+        emp.setCod(cod);
+        emp.setNom(nom);
+        emp.setTip(tip);
+        emp.setUsu(usu);
+        emp.setPass(pass);
+        System.out.println("SERVICIO: "+empDao.actualizar(emp));
+        return empDao.actualizar(emp);
+    }
+
+    @Override
     public List listar() {
         return empDao.listar();
     }
-    
 }

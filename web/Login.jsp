@@ -23,9 +23,11 @@
                     <div class="datos">
                         <label for="usuario">Usuario:</label>
                         <x:text property="usuario" styleId="usuario"/>
+                        <x:messages id="m" property="usuario">${m}</x:messages>
 
                         <label for="password">Contraseña:</label>
                         <x:password property="password" styleId="password"/>
+                        <x:messages id="m" property="password">${m}</x:messages>
                     </div>
                     <div class="botones">
                         <x:submit styleClass="btn-login" value="Iniciar Sesion"/>

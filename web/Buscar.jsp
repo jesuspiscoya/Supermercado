@@ -13,6 +13,9 @@
     if (session.getAttribute("id") != null)
         rol=(String)session.getAttribute("id");
     session.setAttribute("id", null);
+    if (session.getAttribute("error") != null)
+        pg.setMsg(" ");
+    session.setAttribute("error", null);
 %>
 <!DOCTYPE html>
 <html>
@@ -43,6 +46,7 @@
                     <% if (!pg.getMsg().equals("")) { %>
                         <div class="msg-noFind">
                             <span><%= pg.getMsg() %></span>
+                            <x:messages id="m" property="codigo">${m}</x:messages>
                         </div>
                     <% } pg.setMsg(""); %>
                 </x:form>

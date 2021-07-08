@@ -44,20 +44,20 @@
     </bean>
     <!-- ServiciosImp -->
     <bean id="es" class="servicio.EmpleadoServicioImp">
-        <property name="emp" ref="e"></property>
         <property name="empDao" ref="ed"></property>
+        <property name="emp" ref="e"></property>
     </bean>
     <bean id="cs" class="servicio.ClienteServicioImp">
-        <property name="cli" ref="c"></property>
         <property name="cliDao" ref="cd"></property>
+        <property name="cli" ref="c"></property>
     </bean>
     <bean id="ps" class="servicio.ProveedorServicioImp">
-        <property name="pro" ref="p"></property>
         <property name="proDao" ref="pd"></property>
+        <property name="pro" ref="p"></property>
     </bean>
     <bean id="as" class="servicio.ArticuloServicioImp">
-        <property name="art" ref="a"></property>
         <property name="artDao" ref="ad"></property>
+        <property name="art" ref="a"></property>
     </bean>
     <bean id="pes" class="servicio.PedidoServicioImp">
         <property name="pedDao" ref="ped"></property>
@@ -91,6 +91,12 @@
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
         <property name="artSer" ref="as"></property>
+        <property name="pg" ref="pg"></property>
+    </bean>
+    <bean id="/ActualizarControl" class="vista.ActualizarControl">
+        <property name="empSer" ref="es"></property>
+        <property name="cliSer" ref="cs"></property>
+        <property name="proSer" ref="ps"></property>
         <property name="pg" ref="pg"></property>
     </bean>
     <bean id="/ListarControl" class="vista.ListarControl">

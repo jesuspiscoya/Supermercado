@@ -28,6 +28,14 @@ public class ProveedorServicioImp implements ProveedorServicio {
         pro.setDir(dir);
         return proDao.grabar(pro);
     }
+
+    @Override
+    public String actualizar(String cod, String nom, String dir) {
+        pro.setCod(cod);
+        pro.setNom(nom);
+        pro.setDir(dir);
+        return proDao.actualizar(pro);
+    }
     
     @Override
     public List listar() {

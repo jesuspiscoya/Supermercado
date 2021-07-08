@@ -39,39 +39,51 @@
                         <% if (rol.equals("Empleado")) { %>
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>
+                        <x:messages id="m" property="codigo">${m}</x:messages>
 
                         <label for="nombre">Nombre:</label>
                         <x:text property="nombre" styleId="nombre"/>
+                        <x:messages id="m" property="nombre">${m}</x:messages>
 
                         <label for="tipo">Tipo:</label>
                         <x:text property="tipo" styleId="tipo"/>
+                        <x:messages id="m" property="tipo">${m}</x:messages>
 
                         <label for="usuario">Usuario:</label>
                         <x:text property="usuario" styleId="usuario"/>
+                        <x:messages id="m" property="usuario">${m}</x:messages>
 
                         <label for="password">Contraseña:</label>
                         <x:password property="password" styleId="password"/>
+                        <x:messages id="m" property="password">${m}</x:messages>
                         <% } else if (rol.equals("Articulo")) { %>
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>
+                        <x:messages id="m" property="codigo">${m}</x:messages>
 
                         <label for="nombre">Nombre:</label>
                         <x:text property="nombre" styleId="nombre"/>
+                        <x:messages id="m" property="nombre">${m}</x:messages>
 
                         <label for="precio">Precio:</label>
                         <x:text property="precio" styleId="precio"/>
+                        <x:messages id="m" property="precio">${m}</x:messages>
                         
                         <label for="stock">Stock:</label>
                         <x:text property="stock" styleId="stock"/>
+                        <x:messages id="m" property="stock">${m}</x:messages>
                         <% } else { %>
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>
+                        <x:messages id="m" property="codigo">${m}</x:messages>
 
                         <label for="nombre">Nombre:</label>
                         <x:text property="nombre" styleId="nombre"/>
+                        <x:messages id="m" property="nombre">${m}</x:messages>
 
                         <label for="direccion">Dirección:</label>
                         <x:text property="direccion" styleId="direccion"/>
+                        <x:messages id="m" property="direccion">${m}</x:messages>
                         <% } %>
                     </div>
                     

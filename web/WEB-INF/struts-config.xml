@@ -24,16 +24,19 @@
             <forward name="Mensaje" path="/Mensaje.jsp"/>
         </action>
         <action input="/Buscar.jsp" name="Formulario" path="/BuscarControl" scope="request" type="vista.BuscarControl">
-            <forward name="Buscar" path="/Editar.jsp"/>
+            <forward name="Buscar" path="/Actualizar.jsp"/>
             <forward name="Mensaje" path="/Buscar.jsp"/>
+        </action>
+        <action input="/Grabar.jsp" name="Formulario" path="/GrabarControl" scope="request" type="vista.GrabarControl">
+            <forward name="Grabar" path="/Grabar.jsp"/>
+        </action>
+        <action input="/Actualizar.jsp" name="Formulario" path="/ActualizarControl" scope="request" type="ActualizarControl">
+            <forward name="Actualizar" path="/Actualizar.jsp"/>
         </action>
         <action input="/NavBar.jsp" name="Formulario" path="/ListarControl" scope="request" type="vista.ListarControl">
             <forward name="Listar" path="/Listar.jsp"/>
             <forward name="PedOrd" path="/PedOrd.jsp"/>
             <forward name="Salir" path="/Portal.jsp"/>
-        </action>
-        <action input="/Grabar.jsp" name="Formulario" path="/GrabarControl" scope="request" type="vista.GrabarControl">
-            <forward name="Grabar" path="/Grabar.jsp"/>
         </action>
         <action input="/PedOrd.jsp" name="Formulario" path="/PedOrdControl" scope="request" type="vista.PedOrdControl">
             <forward name="PedOrd" path="/PedOrd.jsp"/>
