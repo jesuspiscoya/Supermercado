@@ -73,40 +73,7 @@ public class ClienteJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cliente persistentCliente = em.find(Cliente.class, cliente.getCod());
-            List<Pedido> pedidoListOld = persistentCliente.getPedidoList();
-            List<Pedido> pedidoListNew = cliente.getPedidoList();
-            List<String> illegalOrphanMessages = null;
-            for (Pedido pedidoListOldPedido : pedidoListOld) {
-                if (!pedidoListNew.contains(pedidoListOldPedido)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Pedido " + pedidoListOldPedido + " since its codcli field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            List<Pedido> attachedPedidoListNew = new ArrayList<Pedido>();
-            for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
-                pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getNum());
-                attachedPedidoListNew.add(pedidoListNewPedidoToAttach);
-            }
-            pedidoListNew = attachedPedidoListNew;
-            cliente.setPedidoList(pedidoListNew);
             cliente = em.merge(cliente);
-            for (Pedido pedidoListNewPedido : pedidoListNew) {
-                if (!pedidoListOld.contains(pedidoListNewPedido)) {
-                    Cliente oldCodcliOfPedidoListNewPedido = pedidoListNewPedido.getCodcli();
-                    pedidoListNewPedido.setCodcli(cliente);
-                    pedidoListNewPedido = em.merge(pedidoListNewPedido);
-                    if (oldCodcliOfPedidoListNewPedido != null && !oldCodcliOfPedidoListNewPedido.equals(cliente)) {
-                        oldCodcliOfPedidoListNewPedido.getPedidoList().remove(pedidoListNewPedido);
-                        oldCodcliOfPedidoListNewPedido = em.merge(oldCodcliOfPedidoListNewPedido);
-                    }
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();

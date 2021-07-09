@@ -73,40 +73,7 @@ public class ProveedorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Proveedor persistentProveedor = em.find(Proveedor.class, proveedor.getCod());
-            List<Orden> ordenListOld = persistentProveedor.getOrdenList();
-            List<Orden> ordenListNew = proveedor.getOrdenList();
-            List<String> illegalOrphanMessages = null;
-            for (Orden ordenListOldOrden : ordenListOld) {
-                if (!ordenListNew.contains(ordenListOldOrden)) {
-                    if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<String>();
-                    }
-                    illegalOrphanMessages.add("You must retain Orden " + ordenListOldOrden + " since its codprov field is not nullable.");
-                }
-            }
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
-            List<Orden> attachedOrdenListNew = new ArrayList<Orden>();
-            for (Orden ordenListNewOrdenToAttach : ordenListNew) {
-                ordenListNewOrdenToAttach = em.getReference(ordenListNewOrdenToAttach.getClass(), ordenListNewOrdenToAttach.getNum());
-                attachedOrdenListNew.add(ordenListNewOrdenToAttach);
-            }
-            ordenListNew = attachedOrdenListNew;
-            proveedor.setOrdenList(ordenListNew);
             proveedor = em.merge(proveedor);
-            for (Orden ordenListNewOrden : ordenListNew) {
-                if (!ordenListOld.contains(ordenListNewOrden)) {
-                    Proveedor oldCodprovOfOrdenListNewOrden = ordenListNewOrden.getCodprov();
-                    ordenListNewOrden.setCodprov(proveedor);
-                    ordenListNewOrden = em.merge(ordenListNewOrden);
-                    if (oldCodprovOfOrdenListNewOrden != null && !oldCodprovOfOrdenListNewOrden.equals(proveedor)) {
-                        oldCodprovOfOrdenListNewOrden.getOrdenList().remove(ordenListNewOrden);
-                        oldCodprovOfOrdenListNewOrden = em.merge(oldCodprovOfOrdenListNewOrden);
-                    }
-                }
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
