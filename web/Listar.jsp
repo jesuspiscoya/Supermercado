@@ -60,11 +60,12 @@
                         <% for (int i = 0; i < pg.getLista().size(); i++) { %>
                         <% Object[] fila=(Object[])pg.getLista().get(i); %>
                         <tr>
-                            <x:form styleClass="formListar" action="ArticuloControl" method="post">
+                            <x:form styleClass="formListar" action="PedOrdControl" method="post">
                                 <td></td>
                                 <td><x:hidden property="codigo" value="<%= fila[0].toString() %>"/><%= fila[0] %></td>
                                 <td><x:hidden property="nombre" value="<%= fila[1].toString() %>"/><%= fila[1] %></td>
                                 <td><x:hidden property="precio" value="<%= fila[2].toString() %>"/>S/ <%= fila[2] %></td>
+                                <x:hidden property="acceso" value="Agregar Articulo"/>
                                 <td><button type="submit" class="btn-agregar"><i class="fas fa-plus"></i></button></td>
                                 <td></td>
                             </x:form>

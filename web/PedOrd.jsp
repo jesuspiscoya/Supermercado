@@ -12,16 +12,17 @@
 <%
     Object[] empleado=(Object[])session.getAttribute("acceso");
     PresentadorGeneral pg=(PresentadorGeneral)session.getAttribute("pg");
+    if (session.getAttribute("error") != null)
+        pg.setMsg(" ");
+    session.setAttribute("error", null);
     String rol=(String)session.getAttribute("rol");
     String titulo="";
     Object[] fila=new Object[5];
     Object[] pedidoOrden=pg.getPedOrd();
     if (rol.equals("Pedido")) {
-        pg.setMsg(" ");
         titulo="Nota de Pedido";
         fila=pg.getCliente();
     } else {
-        pg.setMsg(" ");
         titulo="Orden de Compra";
         fila=pg.getProveedor();
     }

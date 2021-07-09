@@ -119,7 +119,7 @@ h2 {
     gap: 40px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .btn-grabar, .btn-login, .btn-buscar,
@@ -262,7 +262,7 @@ h2 {
     border-bottom: 4px solid #009688;
 }
 
-.msg-grabar, .msg-noFind {
+.msg-grabar, .msg-noFind, .msg-eliminar {
     background: #00D866;
     padding: 4px 20px;
     font-size: 13px;
@@ -273,4 +273,8 @@ h2 {
 
 .msg-noFind {
     background: #FFF26B;
+}
+
+.msg-eliminar {
+    background: #FF4444;
 }

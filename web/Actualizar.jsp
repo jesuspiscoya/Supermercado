@@ -30,7 +30,7 @@
     <body>
         <p class="titulo-prin"><%= rol+" "+fila[0] %></p>
         <div class="center">
-            <x:form styleClass="formEditar" action="ActualizarControl" method="post">
+            <x:form styleClass="formEditar" action="CRUDControl" method="post">
                 <h2>Editar Usuario</h2>
                 <div class="datos">
                     <% if (rol.equals("Empleado")) { %>

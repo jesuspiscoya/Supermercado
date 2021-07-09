@@ -25,7 +25,10 @@
                                 <a href="Buscar.jsp?id=Empleado">Buscar</a>
                             </li>
                             <li>
-                                <x:form action="ListarControl" method="post">
+                                <a href="Eliminar.jsp?id=Empleado">Eliminar</a>
+                            </li>
+                            <li>
+                                <x:form action="CRUDControl" method="post">
                                     <x:hidden property="listar" value="Empleado"/>
                                     <x:submit property="acceso" value="Listar"/>
                                 </x:form>
@@ -42,7 +45,10 @@
                                 <a href="Buscar.jsp?id=Cliente">Buscar</a>
                             </li>
                             <li>
-                                <x:form action="ListarControl" method="post">
+                                <a href="Eliminar.jsp?id=Cliente">Eliminar</a>
+                            </li>
+                            <li>
+                                <x:form action="CRUDControl" method="post">
                                     <x:hidden property="listar" value="Cliente"/>
                                     <x:submit property="acceso" value="Listar"/>
                                 </x:form>
@@ -59,7 +65,10 @@
                                 <a href="Buscar.jsp?id=Proveedor">Buscar</a>
                             </li>
                             <li>
-                                <x:form action="ListarControl" method="post">
+                                <a href="Eliminar.jsp?id=Proveedor">Eliminar</a>
+                            </li>
+                            <li>
+                                <x:form action="CRUDControl" method="post">
                                     <x:hidden property="listar" value="Proveedor"/>
                                     <x:submit property="acceso" value="Listar"/>
                                 </x:form>
@@ -76,12 +85,12 @@
                 <div class="border"></div>
                 <ul>
                     <li>
-                        <x:form action="ListarControl" method="post">
+                        <x:form action="PedOrdControl" method="post">
                             <x:submit property="acceso" value="Nuevo Pedido"/>
                         </x:form>
                     </li>
                     <li>
-                        <x:form action="ListarControl" method="post">
+                        <x:form action="PedOrdControl" method="post">
                             <x:submit property="acceso" value="Nueva Orden"/>
                         </x:form>
                     </li>
@@ -93,7 +102,7 @@
             </li>
         </ul>
     </nav>
-    <x:form action="ListarControl" method="post">
+    <x:form action="AccesoControl" method="post">
         <x:submit property="acceso" styleClass="btn-salir" value="Salir"/>
     </x:form>
 </header>

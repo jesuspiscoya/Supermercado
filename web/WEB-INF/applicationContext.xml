@@ -80,29 +80,11 @@
         <property name="empSer" ref="es"></property>
         <property name="pg" ref="pg"></property>
     </bean>
-    <bean id="/BuscarControl" class="vista.BuscarControl">
-        <property name="empSer" ref="es"></property>
-        <property name="cliSer" ref="cs"></property>
-        <property name="proSer" ref="ps"></property>
-        <property name="pg" ref="pg"></property>
-    </bean>
-    <bean id="/GrabarControl" class="vista.GrabarControl">
+    <bean id="/CRUDControl" class="vista.CRUDControl">
         <property name="empSer" ref="es"></property>
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
         <property name="artSer" ref="as"></property>
-        <property name="pg" ref="pg"></property>
-    </bean>
-    <bean id="/ActualizarControl" class="vista.ActualizarControl">
-        <property name="empSer" ref="es"></property>
-        <property name="cliSer" ref="cs"></property>
-        <property name="proSer" ref="ps"></property>
-        <property name="pg" ref="pg"></property>
-    </bean>
-    <bean id="/ListarControl" class="vista.ListarControl">
-        <property name="empSer" ref="es"></property>
-        <property name="cliSer" ref="cs"></property>
-        <property name="proSer" ref="ps"></property>
         <property name="pedSer" ref="pes"></property>
         <property name="ordSer" ref="os"></property>
         <property name="pg" ref="pg"></property>
@@ -110,10 +92,6 @@
     <bean id="/PedOrdControl" class="vista.PedOrdControl">
         <property name="pedSer" ref="pes"></property>
         <property name="ordSer" ref="os"></property>
-        <property name="pg" ref="pg"></property>
-    </bean>
-    <bean id="/ArticuloControl" class="vista.ArticuloControl">
-        <property name="pedSer" ref="pes"></property>
         <property name="pg" ref="pg"></property>
     </bean>
 

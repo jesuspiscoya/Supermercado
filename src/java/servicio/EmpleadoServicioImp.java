@@ -50,4 +50,9 @@ public class EmpleadoServicioImp implements EmpleadoServicio {
     public List listar() {
         return empDao.listar();
     }
+
+    @Override
+    public String eliminar(String cod) {
+        return empDao.eliminar(cod);
+    }
 }

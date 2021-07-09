@@ -33,7 +33,7 @@
         
         <div class="center">
             <div class="contenido">
-                <x:form styleClass="formGrabar" action="GrabarControl" method="post">
+                <x:form styleClass="formGrabar" action="CRUDControl" method="post">
                     <h2>Nuevo <%= rol %></h2>
                     <div class="datos">
                         <% if (rol.equals("Empleado")) { %>
@@ -95,7 +95,7 @@
                     
                     <div class="botones">
                         <x:hidden property="form" value="<%= rol %>"/>
-                        <x:submit styleClass="btn-grabar" value="Grabar"/>
+                        <x:submit property="acceso" styleClass="btn-grabar" value="Grabar"/>
                         <% if (rol.equals("Empleado")) { %>
                         <x:button property="back" styleClass="btn-back" value="Regresar" onclick="location.href='Portal.jsp'"/>
                         <% } else { %>

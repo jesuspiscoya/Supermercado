@@ -41,4 +41,9 @@ public class ProveedorServicioImp implements ProveedorServicio {
     public List listar() {
         return proDao.listar();
     }
+
+    @Override
+    public String eliminar(String cod) {
+        return proDao.eliminar(cod);
+    }
 }

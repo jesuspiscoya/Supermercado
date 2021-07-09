@@ -41,4 +41,9 @@ public class ClienteServicioImp implements ClienteServicio {
     public List listar() {
         return cliDao.listar();
     }
+
+    @Override
+    public String eliminar(String cod) {
+        return cliDao.eliminar(cod);
+    }
 }

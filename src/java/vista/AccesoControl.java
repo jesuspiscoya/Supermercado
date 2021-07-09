@@ -25,15 +25,20 @@ public class AccesoControl extends org.apache.struts.action.Action {
             throws Exception {
         
         Formulario f=(Formulario) form;
-        Object[] fila=empSer.validar(f.getUsuario(), f.getPassword());
         request.getSession().setAttribute("pg", pg);
-            
-        if (fila!=null) {
-            request.getSession().setAttribute("acceso", fila);
-            return mapping.findForward("Menu");
+
+        if (request.getParameter("acceso").equals("Iniciar Sesion")) {
+            Object[] fila=empSer.validar(f.getUsuario(), f.getPassword());
+            if (fila!=null) {
+                request.getSession().setAttribute("acceso", fila);
+                return mapping.findForward("Acceso");
+            } else {
+                pg.setMsg("Acceso no permitido");
+                return mapping.findForward("Mensaje");
+            }
         } else {
-            pg.setMsg("Acceso no permitido");
-            return mapping.findForward("Mensaje");
+            request.getSession().invalidate();
+            return mapping.findForward("Salir");
         }
     }
 }

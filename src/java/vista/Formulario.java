@@ -131,8 +131,7 @@ public class Formulario extends org.apache.struts.action.ActionForm {
                     errors.add("codigo", new ActionMessage("error.codigo"));
                 request.getSession().setAttribute("error", "Codigo");
             }
-        }
-        if (request.getParameter("nombre") != null)
+        } if (request.getParameter("nombre") != null)
             if (nombre == null || nombre.length() < 1)
                 errors.add("nombre", new ActionMessage("error.nombre"));
         if (request.getParameter("tipo") != null)

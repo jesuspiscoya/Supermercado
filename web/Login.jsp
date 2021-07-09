@@ -30,8 +30,8 @@
                         <x:messages id="m" property="password">${m}</x:messages>
                     </div>
                     <div class="botones">
-                        <x:submit styleClass="btn-login" value="Iniciar Sesion"/>
-                        <x:button property="back" styleClass="btn-back" onclick="location.href='Portal.jsp'" value="Regresar"/>
+                        <x:submit property="acceso" styleClass="btn-login" value="Iniciar Sesion"/>
+                        <x:button property="" styleClass="btn-back" onclick="location.href='Portal.jsp'" value="Regresar"/>
                     </div>
                 </x:form>
             </div>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Buscar
-    Created on : Apr 29, 2021, 8:52:23 PM
+    Document   : Eliminar.jsp
+    Created on : Jul 9, 2021, 5:38:37 PM
     Author     : jesus
 --%>
 
@@ -33,14 +33,14 @@
         <div class="center">
             <div class="contenido">
                 <x:form styleClass="formBuscar" action="CRUDControl" method="post">
-                    <h2>Buscar <%= rol %></h2>
+                    <h2>Eliminar <%= rol %></h2>
                     <div class="datos">
                         <label for="codigo">Código:</label>
                         <x:text property="codigo" styleId="codigo"/>
                     </div>
                     
                     <% if (!pg.getMsg().equals("")) { %>
-                        <div class="msg-noFind">
+                        <div class="msg-eliminar">
                             <span><%= pg.getMsg() %></span>
                             <x:messages id="m" property="codigo">${m}</x:messages>
                         </div>
@@ -48,7 +48,7 @@
                     
                     <div class="botones">
                         <x:hidden property="form" value="<%= rol %>"/>
-                        <x:submit property="acceso" styleClass="btn-buscar" value="Buscar"/>
+                        <x:submit property="acceso" styleClass="btn-buscar" value="Eliminar"/>
                         <x:button styleClass="btn-back" onclick="location.href='Menu.jsp'" value="Regresar" property=""/>
                     </div>
                 </x:form>
