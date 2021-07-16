@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Articulo.findBySto", query = "SELECT a FROM Articulo a WHERE a.sto = :sto")})
 public class Articulo implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "articulo")
+    private List<Detallepedido> detallepedidoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -129,6 +132,15 @@ public class Articulo implements Serializable {
     @Override
     public String toString() {
         return "negocio.Articulo[ cod=" + cod + " ]";
+    }
+
+    @XmlTransient
+    public List<Detallepedido> getDetallepedidoList() {
+        return detallepedidoList;
+    }
+
+    public void setDetallepedidoList(List<Detallepedido> detallepedidoList) {
+        this.detallepedidoList = detallepedidoList;
     }
     
 }

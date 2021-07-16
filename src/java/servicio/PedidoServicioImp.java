@@ -16,6 +16,8 @@ public class PedidoServicioImp implements PedidoServicio {
     private Pedido ped;
     private Empleado emp;
     private Cliente cli;
+    private Articulo art;
+    private Detallepedido detPed;
     private Object[] lis;
     private List cesta=new ArrayList();
 
@@ -41,6 +43,14 @@ public class PedidoServicioImp implements PedidoServicio {
 
     public void setCli(Cliente cli) {
         this.cli = cli;
+    }
+
+    public void setArt(Articulo art) {
+        this.art = art;
+    }
+
+    public void setDetPed(Detallepedido detPed) {
+        this.detPed = detPed;
     }
     
     @Override
@@ -136,5 +146,15 @@ public class PedidoServicioImp implements PedidoServicio {
         ped.setCodcli(cli);
         ped.setTot(total);
         return pedDao.grabar(ped);
+    }
+
+    @Override
+    public String grabarDetalle(String num, String cod, int can) {
+        ped.setNum(num);
+        art.setCod(cod);
+        detPed.setPedido(ped);
+        detPed.setArticulo(art);
+        detPed.setCan(can);
+        return pedDao.grabarDetalle(detPed);
     }
 }

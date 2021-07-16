@@ -10,4 +10,5 @@ public interface OrdenServicio {
     public List actualizarArticulo(String cod, int cantidad);
     public List quitarArticulo(String cod);
     public String grabarOrden(String codEmp, String codPro, double total);
+    public String grabarDetalle(String num, String cod, int can);
 }

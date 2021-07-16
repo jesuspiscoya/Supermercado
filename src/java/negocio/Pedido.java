@@ -6,7 +6,9 @@
 package negocio;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Pedido.findByFec", query = "SELECT p FROM Pedido p WHERE p.fec = :fec")
     , @NamedQuery(name = "Pedido.findByTot", query = "SELECT p FROM Pedido p WHERE p.tot = :tot")})
 public class Pedido implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    private List<Detallepedido> detallepedidoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -125,6 +132,15 @@ public class Pedido implements Serializable {
     @Override
     public String toString() {
         return "negocio.Pedido[ num=" + num + " ]";
+    }
+
+    @XmlTransient
+    public List<Detallepedido> getDetallepedidoList() {
+        return detallepedidoList;
+    }
+
+    public void setDetallepedidoList(List<Detallepedido> detallepedidoList) {
+        this.detallepedidoList = detallepedidoList;
     }
     
 }

@@ -117,6 +117,7 @@
                             </x:form>
                             <% if (pg.getLista().size() > 0) { %>
                             <x:form action="PedOrdControl" method="post">
+                                <th><x:hidden property="num" value="<%= pedidoOrden[0].toString() %>"/></th>
                                 <th><x:hidden property="codEmp" value="<%= empleado[0].toString() %>"/></th>
                                 <th><x:hidden property="cod" value="<%= fila[0].toString() %>"/></th>
                                 <th><x:hidden property="total" value="<%= String.valueOf(total) %>"/></th>

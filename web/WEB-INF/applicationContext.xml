@@ -16,6 +16,8 @@
     <bean id="a" class="negocio.Articulo"></bean>
     <bean id="pe" class="negocio.Pedido"></bean>
     <bean id="o" class="negocio.Orden"></bean>
+    <bean id="dp" class="negocio.Detallepedido"></bean>
+    <bean id="do" class="negocio.Detalleorden"></bean>
     <!-- JpaControllers -->
     <bean id="ejc" class="persistencia.EmpleadoJpaController"></bean>
     <bean id="cjc" class="persistencia.ClienteJpaController"></bean>
@@ -23,6 +25,8 @@
     <bean id="ajc" class="persistencia.ArticuloJpaController"></bean>
     <bean id="pejc" class="persistencia.PedidoJpaController"></bean>
     <bean id="ojc" class="persistencia.OrdenJpaController"></bean>
+    <bean id="dpjc" class="persistencia.DetallepedidoJpaController"></bean>
+    <bean id="dojc" class="persistencia.DetalleordenJpaController"></bean>
     <!-- DaosImp -->
     <bean id="ed" class="persistencia.EmpleadoDaoImp">
         <property name="empjc" ref="ejc"></property>
@@ -38,9 +42,11 @@
     </bean>
     <bean id="ped" class="persistencia.PedidoDaoImp">
         <property name="pedjc" ref="pejc"></property>
+        <property name="detpedjc" ref="dpjc"></property>
     </bean>
     <bean id="od" class="persistencia.OrdenDaoImp">
         <property name="ordjc" ref="ojc"></property>
+        <property name="detordjc" ref="dojc"></property>
     </bean>
     <!-- ServiciosImp -->
     <bean id="es" class="servicio.EmpleadoServicioImp">
@@ -66,6 +72,8 @@
         <property name="ped" ref="pe"></property>
         <property name="emp" ref="e"></property>
         <property name="cli" ref="c"></property>
+        <property name="art" ref="a"></property>
+        <property name="detPed" ref="dp"></property>
     </bean>
     <bean id="os" class="servicio.OrdenServicioImp">
         <property name="ordDao" ref="od"></property>
@@ -74,6 +82,8 @@
         <property name="ord" ref="o"></property>
         <property name="emp" ref="e"></property>
         <property name="pro" ref="p"></property>
+        <property name="art" ref="a"></property>
+        <property name="detOrd" ref="do"></property>
     </bean>
     <!-- Controles -->
     <bean id="/AccesoControl" class="vista.AccesoControl">

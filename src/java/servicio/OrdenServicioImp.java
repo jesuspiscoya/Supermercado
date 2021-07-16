@@ -16,6 +16,8 @@ public class OrdenServicioImp implements OrdenServicio {
     private Orden ord;
     private Empleado emp;
     private Proveedor pro;
+    private Articulo art;
+    private Detalleorden detOrd;
     private Object[] lis;
     private List cesta=new ArrayList();
 
@@ -41,6 +43,14 @@ public class OrdenServicioImp implements OrdenServicio {
 
     public void setPro(Proveedor pro) {
         this.pro = pro;
+    }
+
+    public void setArt(Articulo art) {
+        this.art = art;
+    }
+
+    public void setDetOrd(Detalleorden detOrd) {
+        this.detOrd = detOrd;
     }
     
     @Override
@@ -136,5 +146,15 @@ public class OrdenServicioImp implements OrdenServicio {
         ord.setCodprov(pro);
         ord.setTot(total);
         return ordDao.grabar(ord);
+    }
+
+    @Override
+    public String grabarDetalle(String num, String cod, int can) {
+        ord.setNum(num);
+        art.setCod(cod);
+        detOrd.setOrden(ord);
+        detOrd.setArticulo(art);
+        detOrd.setCan(can);
+        return ordDao.grabarDetalle(detOrd);
     }
 }

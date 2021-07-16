@@ -8,6 +8,7 @@
     <class>negocio.Pedido</class>
     <class>negocio.Orden</class>
     <class>negocio.Proveedor</class>
+    <class>negocio.Detallepedido</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/SupermercadoPiscoya"/>
