@@ -9,6 +9,7 @@ public class PresentadorGeneral {
     private Object[] empleado={"","","","",""};
     private Object[] cliente={"","",""};
     private Object[] proveedor={"","",""};
+    private Object[] articulo={"","","",""};
     private Object[] pedOrd={"",""};
     private List lista=new ArrayList();
 
@@ -50,6 +51,14 @@ public class PresentadorGeneral {
 
     public void setProveedor(Object[] proveedor) {
         this.proveedor = proveedor;
+    }
+
+    public Object[] getArticulo() {
+        return articulo;
+    }
+
+    public void setArticulo(Object[] articulo) {
+        this.articulo = articulo;
     }
 
     public Object[] getPedOrd() {

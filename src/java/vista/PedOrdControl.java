@@ -82,22 +82,20 @@ public class PedOrdControl extends org.apache.struts.action.Action {
                 Object[] carrito=(Object[])pg.getLista().get(i);
                 pg.setMsg(pedSer.grabarDetalle(f.getNum(), carrito[0].toString(), (int)carrito[3]));
             }
-            pg.setPedOrd(pedSer.nuevoPedido());
             Object[] cliente={"","",""};
             pg.setCliente(cliente);
-            pg.getLista().clear();
+            return mapping.findForward("Grabar");
         } else if (request.getParameter("acceso").equals("Grabar Orden")) {
             pg.setMsg(ordSer.grabarOrden(f.getCodEmp(), f.getCod(), f.getTotal()));
             for (int i = 0; i < pg.getLista().size(); i++) {
                 Object[] carrito=(Object[])pg.getLista().get(i);
                 pg.setMsg(ordSer.grabarDetalle(f.getNum(), carrito[0].toString(), (int)carrito[3]));
             }
-            pg.setPedOrd(ordSer.nuevaOrden());
             Object[] proveedor={"","",""};
             pg.setProveedor(proveedor);
-            pg.getLista().clear();
+            return mapping.findForward("Grabar");
         } else {
-            pg.setMsg("Articulos");
+            pg.setMsg("Articulo");
             pg.setLista(pedSer.listarArticulos());
             return mapping.findForward("Articulos");
         } return mapping.findForward("PedOrd");

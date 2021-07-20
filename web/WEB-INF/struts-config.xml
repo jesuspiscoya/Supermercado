@@ -35,6 +35,7 @@
         <action input="/PedOrd.jsp" name="Formulario" path="/PedOrdControl" scope="request" type="vista.PedOrdControl">
             <forward name="PedOrd" path="/PedOrd.jsp"/>
             <forward name="Articulos" path="/Listar.jsp"/>
+            <forward name="Grabar" path="/Detalle.jsp"/>
         </action>
         
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>

@@ -16,8 +16,10 @@
         fila=pg.getEmpleado();
     else if (rol.equals("Cliente"))
         fila=pg.getCliente();
-    else
+    else if (rol.equals("Proveedor"))
         fila=pg.getProveedor();
+    else
+        fila=pg.getArticulo();
 %>
 <!DOCTYPE html>
 <html>
@@ -45,10 +47,16 @@
 
                     <label for="password">Contraseña:</label>
                     <x:text property="password" value="<%= fila[4].toString() %>" styleId="password"/>
+                    <% } else if (rol.equals("Articulo")) { %>
+                    <label for="nombre">Nombre:</label>
+                    <x:text property="nombre" value="<%= fila[1].toString() %>" styleId="nombre"/>
+                    
+                    <label for="precio">Precio:</label>
+                    <x:text property="precio" value="<%= fila[2].toString() %>" styleId="precio"/>
+                    
+                    <label for="stock">Stock:</label>
+                    <x:text property="stock" value="<%= fila[3].toString() %>" styleId="stock"/>
                     <% } else { %>
-                    <label for="codigo">Código:</label>
-                    <x:text property="codigo" value="<%= fila[0].toString() %>" styleId="codigo"/>
-
                     <label for="nombre">Nombre:</label>
                     <x:text property="nombre" value="<%= fila[1].toString() %>" styleId="nombre"/>
 

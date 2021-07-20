@@ -15,68 +15,83 @@
     <nav>
         <ul>
             <li>
-                <span>Archivos</span>
+                <span>Empleado</span>
                 <div class="border"></div>
                 <ul>
                     <li>
-                        <span>Empleado</span>
-                        <ul>
-                            <li>
-                                <a href="Buscar.jsp?id=Empleado">Buscar</a>
-                            </li>
-                            <li>
-                                <a href="Eliminar.jsp?id=Empleado">Eliminar</a>
-                            </li>
-                            <li>
-                                <x:form action="CRUDControl" method="post">
-                                    <x:hidden property="listar" value="Empleado"/>
-                                    <x:submit property="acceso" value="Listar"/>
-                                </x:form>
-                            </li>
-                        </ul>
+                        <a href="Buscar.jsp?id=Empleado">Buscar</a>
                     </li>
                     <li>
-                        <span>Cliente</span>
-                        <ul>
-                            <li>
-                                <a href="Grabar.jsp?id=Cliente">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="Buscar.jsp?id=Cliente">Buscar</a>
-                            </li>
-                            <li>
-                                <a href="Eliminar.jsp?id=Cliente">Eliminar</a>
-                            </li>
-                            <li>
-                                <x:form action="CRUDControl" method="post">
-                                    <x:hidden property="listar" value="Cliente"/>
-                                    <x:submit property="acceso" value="Listar"/>
-                                </x:form>
-                            </li>
-                        </ul>
+                        <a href="Eliminar.jsp?id=Empleado">Eliminar</a>
                     </li>
                     <li>
-                        <span>Proveedor</span>
-                        <ul>
-                            <li>
-                                <a href="Grabar.jsp?id=Proveedor">Registrar</a>
-                            </li>
-                            <li>
-                                <a href="Buscar.jsp?id=Proveedor">Buscar</a>
-                            </li>
-                            <li>
-                                <a href="Eliminar.jsp?id=Proveedor">Eliminar</a>
-                            </li>
-                            <li>
-                                <x:form action="CRUDControl" method="post">
-                                    <x:hidden property="listar" value="Proveedor"/>
-                                    <x:submit property="acceso" value="Listar"/>
-                                </x:form>
-                            </li>
-                        </ul>
+                        <x:form action="CRUDControl" method="post">
+                            <x:hidden property="listar" value="Empleado"/>
+                            <x:submit property="acceso" value="Listar"/>
+                        </x:form>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Cliente</span>
+                <div class="border"></div>
+                <ul>
+                    <li>
+                        <a href="Grabar.jsp?id=Cliente">Registrar</a>
                     </li>
                     <li>
-                        <a href="Grabar.jsp?id=Articulo">Nuevo Articulo</a>
+                        <a href="Buscar.jsp?id=Cliente">Buscar</a>
+                    </li>
+                    <li>
+                        <a href="Eliminar.jsp?id=Cliente">Eliminar</a>
+                    </li>
+                    <li>
+                        <x:form action="CRUDControl" method="post">
+                            <x:hidden property="listar" value="Cliente"/>
+                            <x:submit property="acceso" value="Listar"/>
+                        </x:form>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Proveedor</span>
+                <div class="border"></div>
+                <ul>
+                    <li>
+                        <a href="Grabar.jsp?id=Proveedor">Registrar</a>
+                    </li>
+                    <li>
+                        <a href="Buscar.jsp?id=Proveedor">Buscar</a>
+                    </li>
+                    <li>
+                        <a href="Eliminar.jsp?id=Proveedor">Eliminar</a>
+                    </li>
+                    <li>
+                        <x:form action="CRUDControl" method="post">
+                            <x:hidden property="listar" value="Proveedor"/>
+                            <x:submit property="acceso" value="Listar"/>
+                        </x:form>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Artículo</span>
+                <div class="border"></div>
+                <ul>
+                    <li>
+                        <a href="Grabar.jsp?id=Articulo">Registrar</a>
+                    </li>
+                    <li>
+                        <a href="Buscar.jsp?id=Articulo">Buscar</a>
+                    </li>
+                    <li>
+                        <a href="Eliminar.jsp?id=Articulo">Eliminar</a>
+                    </li>
+                    <li>
+                        <x:form action="CRUDControl" method="post">
+                            <x:hidden property="listar" value="Articulo"/>
+                            <x:submit property="acceso" value="Listar"/>
+                        </x:form>
                     </li>
                 </ul>
             </li>
@@ -95,10 +110,6 @@
                         </x:form>
                     </li>
                 </ul>
-            </li>
-            <li>
-                <span>Consultas</span>
-                <div class="border"></div>
             </li>
         </ul>
     </nav>

@@ -12,12 +12,52 @@ public class ArticuloDaoImp implements ArticuloDao {
     }
 
     @Override
+    public Object[] buscar(String cod) {
+        Articulo art=artjc.findArticulo(cod);
+        if (art!=null) {
+            Object[] fila=new Object[4];
+            fila[0]=art.getCod();
+            fila[1]=art.getNom();
+            fila[2]=art.getPre();
+            fila[3]=art.getSto();
+            return fila;
+        }
+        return null;
+    }
+    
+    @Override
     public String grabar(Articulo art) {
         String msg;
         
         try {
             artjc.create(art);
             msg="Artículo grabado con éxito";
+        } catch (Exception e) {
+            msg=e.getMessage();
+        }
+        return msg;
+    }
+
+    @Override
+    public String actualizar(Articulo art) {
+        String msg;
+        
+        try {
+            artjc.edit(art);
+            msg="Artículo actualizado";
+        } catch (Exception e) {
+            msg=e.getMessage();
+        }
+        return msg;
+    }
+
+    @Override
+    public String eliminar(String cod) {
+        String msg;
+        
+        try {
+            artjc.destroy(cod);
+            msg="Artículo eliminado";
         } catch (Exception e) {
             msg=e.getMessage();
         }

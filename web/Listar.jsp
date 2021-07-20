@@ -48,13 +48,17 @@
                             <td><%= fila[3] %></td>
                             <td><%= fila[4] %></td>
                         </tr>
-                        <% } } else if (pg.getMsg().equals("Articulos")) { %>
+                        <% } } else if (pg.getMsg().equals("Articulos") || pg.getMsg().equals("Articulo")) { %>
                         <tr>
                             <th class="tabla-titulo"></th>
                             <th class="tabla-titulo">Código</th>
                             <th class="tabla-titulo">Nombre</th>
                             <th class="tabla-titulo">Precio</th>
+                            <% if (pg.getMsg().equals("Articulo")) { %>
                             <th class="tabla-titulo">Añadir</th>
+                            <% } else { %>
+                            <th class="tabla-titulo">Stock</th>
+                            <% } %>
                             <th class="tabla-titulo"></th>
                         </tr>
                         <% for (int i = 0; i < pg.getLista().size(); i++) { %>
@@ -65,8 +69,12 @@
                                 <td><x:hidden property="codigo" value="<%= fila[0].toString() %>"/><%= fila[0] %></td>
                                 <td><x:hidden property="nombre" value="<%= fila[1].toString() %>"/><%= fila[1] %></td>
                                 <td><x:hidden property="precio" value="<%= fila[2].toString() %>"/>S/ <%= fila[2] %></td>
+                                <% if (pg.getMsg().equals("Articulos")) { %>
+                                <td><%= fila[3] %></td>
+                                <% } else { %>
                                 <x:hidden property="acceso" value="Agregar Articulo"/>
                                 <td><button type="submit" class="btn-agregar"><i class="fas fa-plus"></i></button></td>
+                                <% } %>
                                 <td></td>
                             </x:form>
                         </tr>
@@ -87,7 +95,7 @@
                     </table>
                 </div>
                 <div class="botones">
-                <% if (pg.getMsg().equals("Articulos")) { %>
+                <% if (pg.getMsg().equals("Articulo")) { %>
                     <x:button styleClass="btn-back" value="Regresar" onclick="javascript:history.back()" property=""/>
                 <% } else { %>
                     <x:button styleClass="btn-back" value="Regresar" onclick="location.href='Menu.jsp'" property=""/>

@@ -95,8 +95,6 @@
         <property name="cliSer" ref="cs"></property>
         <property name="proSer" ref="ps"></property>
         <property name="artSer" ref="as"></property>
-        <property name="pedSer" ref="pes"></property>
-        <property name="ordSer" ref="os"></property>
         <property name="pg" ref="pg"></property>
     </bean>
     <bean id="/PedOrdControl" class="vista.PedOrdControl">

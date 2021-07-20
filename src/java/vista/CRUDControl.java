@@ -8,8 +8,6 @@ import org.apache.struts.action.ActionMapping;
 import servicio.ArticuloServicio;
 import servicio.ClienteServicio;
 import servicio.EmpleadoServicio;
-import servicio.OrdenServicio;
-import servicio.PedidoServicio;
 import servicio.ProveedorServicio;
 
 public class CRUDControl extends org.apache.struts.action.Action {
@@ -17,8 +15,6 @@ public class CRUDControl extends org.apache.struts.action.Action {
     private ClienteServicio cliSer;
     private ProveedorServicio proSer;
     private ArticuloServicio artSer;
-    private PedidoServicio pedSer;
-    private OrdenServicio ordSer;
     private PresentadorGeneral pg;
 
     public void setEmpSer(EmpleadoServicio empSer) {
@@ -35,14 +31,6 @@ public class CRUDControl extends org.apache.struts.action.Action {
 
     public void setArtSer(ArticuloServicio artSer) {
         this.artSer = artSer;
-    }
-
-    public void setPedSer(PedidoServicio pedSer) {
-        this.pedSer = pedSer;
-    }
-
-    public void setOrdSer(OrdenServicio ordSer) {
-        this.ordSer = ordSer;
     }
 
     public void setPg(PresentadorGeneral pg) {
@@ -78,7 +66,7 @@ public class CRUDControl extends org.apache.struts.action.Action {
                     request.getSession().setAttribute("id", "Cliente");
                     return mapping.findForward("Mensaje");
                 }
-            } else {
+            } else if (request.getParameter("form").equals("Proveedor")) {
                 Object[] fila=proSer.buscar(f.getCodigo());
                 if (fila!=null) {
                     pg.setProveedor(fila);
@@ -86,6 +74,16 @@ public class CRUDControl extends org.apache.struts.action.Action {
                 } else {
                     pg.setMsg("Proveedor no existe");
                     request.getSession().setAttribute("id", "Proveedor");
+                    return mapping.findForward("Mensaje");
+                }
+            } else { 
+                Object[] fila=artSer.buscar(f.getCodigo());
+                if (fila!=null) {
+                    pg.setArticulo(fila);
+                    request.getSession().setAttribute("id", "Articulo");
+                } else {
+                    pg.setMsg("Artículo no existe");
+                    request.getSession().setAttribute("id", "Articulo");
                     return mapping.findForward("Mensaje");
                 }
             } return mapping.findForward("Buscar");
@@ -112,10 +110,14 @@ public class CRUDControl extends org.apache.struts.action.Action {
                 pg.setMsg(cliSer.actualizar(f.getCodigo(), f.getNombre(), f.getDireccion()));
                 pg.setCliente(cliSer.buscar(f.getCodigo()));
                 request.getSession().setAttribute("id", "Cliente");
-            } else {
+            } else if (request.getParameter("form").equals("Proveedor")) {
                 pg.setMsg(proSer.actualizar(f.getCodigo(), f.getNombre(), f.getDireccion()));
                 pg.setProveedor(proSer.buscar(f.getCodigo()));
                 request.getSession().setAttribute("id", "Proveedor");
+            } else {
+                pg.setMsg(artSer.actualizar(f.getCodigo(), f.getNombre(), Double.parseDouble(f.getPrecio()), Integer.parseInt(f.getStock())));
+                pg.setArticulo(artSer.buscar(f.getCodigo()));
+                request.getSession().setAttribute("id", "Articulo");
             } return mapping.findForward("Actualizar");
         } else if (request.getParameter("acceso").equals("Eliminar")) {
             if (request.getParameter("form").equals("Empleado")) {
@@ -124,20 +126,26 @@ public class CRUDControl extends org.apache.struts.action.Action {
             } else if (request.getParameter("form").equals("Cliente")) {
                 pg.setMsg(cliSer.eliminar(f.getCodigo()));
                 request.getSession().setAttribute("id", "Cliente");
-            } else {
+            } else if (request.getParameter("form").equals("Proveedor")) {
                 pg.setMsg(proSer.eliminar(f.getCodigo()));
                 request.getSession().setAttribute("id", "Proveedor");
+            } else {
+                pg.setMsg(artSer.eliminar(f.getCodigo()));
+                request.getSession().setAttribute("id", "Articulo");
             } return mapping.findForward("Eliminar");
         } else {
             if (request.getParameter("listar").equals("Empleado")) {
                 pg.setLista(empSer.listar());
                 pg.setMsg("Empleados");
-            } if (request.getParameter("listar").equals("Cliente")) {
+            } else if (request.getParameter("listar").equals("Cliente")) {
                 pg.setLista(cliSer.listar());
                 pg.setMsg("Clientes");
-            } if (request.getParameter("listar").equals("Proveedor")) {
+            } else if (request.getParameter("listar").equals("Proveedor")) {
                 pg.setLista(proSer.listar());
-                pg.setMsg("Proveedor");
+                pg.setMsg("Proveedores");
+            } else {
+                pg.setLista(artSer.listar());
+                pg.setMsg("Articulos");
             } return mapping.findForward("Listar");
         }
     }
